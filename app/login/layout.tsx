@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-
+import Navbar from "../_global_components/login_nav";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,7 +7,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      
+      <body>
+        <Navbar></Navbar>
+        {children}
+        </body>
     </html>
   );
 }

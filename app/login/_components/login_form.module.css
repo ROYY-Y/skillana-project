@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5em;
+}
+.link{
+    display: block;      /* ต้องเปลี่ยนจาก inline เป็น block ก่อน ถึงจะใช้ margin auto ได้เต็มประสิทธิภาพ */
+    width: fit-content;  /* ให้ขนาดกล่องเท่ากับตัวหนังสือ */
+    margin-left: auto;   /* ดีดไปขวาสุด */
+    border-bottom: 1px solid #b2b2b2;
+    color: #b2b2b2;     
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: all .2s;
+}
+
+.link:hover{
+    color: white;
+    border-color: white;
+}
+
+.loginBtn{
+    width: 100%;
+    height: 3.3em;
+    border: none;
+    border-radius: 5px;
+    background-color: #5F28CD;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.loginBtn:hover{
+    background-color: #411c8d;
+    color: rgb(200, 199, 199);
+}
+
+.signUp{
+    color: rgb(0, 196, 236);
+    text-decoration: underline;
+    transition: all .2s;
+}
+.signUp:hover{
+    color: rgb(126, 222, 241); ;
+}

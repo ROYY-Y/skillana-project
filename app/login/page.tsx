@@ -1,19 +1,13 @@
-import Navbar from "../_global_components/login_nav"
+import Navbar from "../_global_components/authen_pages/login_nav"
 import style from "./login_page.module.css"
 import Form from "./_components/login_form"
+import LeftBox from "../_global_components/authen_pages/left_box"
+
 export default function Login(){
     return(<>
        <main className={style.mainBox}>
             
-            <section className={`${style.leftBox}`}>
-                <img src={"/login-logo2-final.png"}></img>
-                <div style={{marginLeft : "50px"}}>
-                    <h3>Learn and grow</h3>
-                    <h3>your skills with SkillANA</h3>
-                    <br></br>
-                    <h6>Collecting your skill with skill wallet website</h6>
-                </div>
-            </section>
+            <LeftBox></LeftBox>
             
             <div style={{width : ".1em", backgroundColor : "black"}}></div>
             

@@ -5,13 +5,23 @@
 }
 
 .label{
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: 100;
+}
+
+.large{
+    width: 41em;
+    height: 2.8em;
 }
 
 .medium{
     width: 35em;
     height: 3.3em;
+}
+
+.small{
+    width: 20em;
+    height: 2.8em;
 }
 
 .inputWrapper{

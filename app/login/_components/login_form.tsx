@@ -1,5 +1,5 @@
 'use client'
-import InputComponent from "@/app/_global_components/login_input"
+import InputComponent from "@/app/_global_components/authen_pages/login_input"
 import Link from "next/link"
 import { useRef } from "react"
 import style from "./login_form.module.css"

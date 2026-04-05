@@ -1,4 +1,4 @@
-import Navbar from "../_global_components/authen_pages/login_nav"
+
 import style from "./login_page.module.css"
 import Form from "./_components/login_form"
 import LeftBox from "../_global_components/authen_pages/left_box"

@@ -1,0 +1,35 @@
+.formBox{
+    display: flex;
+    gap: 1em;
+}
+
+.resendBtn{
+    color: rgb(0, 196, 236);
+    text-decoration: underline;
+    transition: all .2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.resendBtn:hover{
+    color: rgb(126, 222, 241);
+}
+
+.verify{
+    width: 40%;
+    height: 2.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #5F28CD;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.verify:hover{
+    background-color: #411c8d;
+    color: rgb(200, 199, 199);
+}

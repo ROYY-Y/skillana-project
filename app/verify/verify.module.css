@@ -1,0 +1,43 @@
+.mainBox{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+}
+
+
+
+.rightBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55%;
+    height: 100%;
+    justify-content: space-around;
+    padding-top: 2em;
+    padding-bottom: 3em;
+    h3{
+        font-size: xx-large;
+    }
+    h6{
+        font-size: large;
+        font-weight: 100;
+    }
+}
+
+.otpLogo{
+    width: 10em;
+    height: 14em;
+}
+
+.resendBtn{
+    color: rgb(0, 196, 236);
+    text-decoration: underline;
+    transition: all .2s;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.resendBtn:hover{
+    color: rgb(126, 222, 241);
+}

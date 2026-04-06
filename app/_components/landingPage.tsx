@@ -1,6 +1,7 @@
 import styles from './landingPage.module.css';
+import Link from 'next/link';
 
-export default function LandingPageNavbar() {
+export function LandingPageNavbar() {
   return (
     <nav className={styles.navbar}>
         <a href="" className={styles.logo}>
@@ -15,9 +16,9 @@ export default function LandingPageNavbar() {
         </ul>
 
         <ul className={styles.auth_box}>
-            <li><a href="" className={styles.sign_up}>Sign up</a></li>
+            <li><Link href="/login" className={styles.sign_up}>Sign up</Link></li>
             <li>
-                <a href=""><button className={styles.login_btn}>Login</button></a>
+                <Link href="/create-account"><button className={styles.login_btn}>Login</button></Link>
             </li>
         </ul>
 

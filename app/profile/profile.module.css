@@ -1,0 +1,100 @@
+
+.profileBox{
+    display : block;
+    margin-top: 10px;
+    width : 625px;
+    height: 344px;
+    background-color: #552597;
+    border-radius: 16px;
+    border: 1px solid #ffffff99;
+}
+.profileSection{
+    display : block;
+    font-size : 20px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-top : 20px;
+    margin-left : 20px;
+}
+.profileContent{  /*Input Field Styles*/
+    margin-bottom : 2px;
+    color : white;
+    font-size : 16px;
+    padding-left : 20px;
+    padding-right : 20px;
+    background-color: #3A1C63;
+    width: 552px;
+    height: 50px;
+    border-radius: 10px;
+    border : 0px ;
+}
+
+.head{
+    font-size : 32px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.Wrapper {
+    position: relative; 
+    display : flex;
+    width: 100%; 
+    align-items: center;
+}
+
+.editIcon{
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: auto;
+}
+
+.divider {
+    margin-top : 40px;
+    margin-bottom : 20px;
+    width: 1281px;
+    
+    background-color: white;
+    height: 1px;
+}
+.logout {
+    margin-top : 20px;
+    width: 200px;
+    height: 60px;
+    font-size : 24px;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom : 60px;
+}
+
+
+/*------------------------Set Layout in Profile Pages------------------------------*/
+.mainContainer{
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    gap : 20px;
+    margin-top : 20px;
+    
+}
+.profileHeader {
+    display : block;
+    width: 100%;
+    font-family: 'Poppins', sans-serif; 
+    margin-left : 300px;
+}
+.generalInfo{
+    display : grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap : 20px;
+    
+    margin-left : 0px;
+}
+/*------------------------END Set Layout in Profile Pages------------------------------*/

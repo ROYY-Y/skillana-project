@@ -1,0 +1,46 @@
+
+.logBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.subBox{
+    box-sizing: border-box;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.createBtn{
+    width: 100%;
+    height: 2.8em;
+    border: none;
+    border-radius: 5px;
+    background-color: #5F28CD;
+    color: white;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+    transition: all .3s;
+}
+.createBtn:hover{
+    background-color: #411c8d;
+    color: rgb(200, 199, 199);
+}
+.loginBtn:hover{
+    background-color: #411c8d;
+    color: rgb(200, 199, 199);
+}
+
+.login{
+    color: rgb(0, 196, 236);
+    text-decoration: underline;
+    transition: all .2s;
+}
+.login:hover{
+    color: rgb(126, 222, 241); ;
+}

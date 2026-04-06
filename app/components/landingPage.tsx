@@ -1,4 +1,4 @@
-import styles from './Navbar.module.css';
+import styles from './landingPage.module.css';
 
 export default function LandingPageNavbar() {
   return (
@@ -23,4 +23,22 @@ export default function LandingPageNavbar() {
 
     </nav>
   );
-}
+};
+
+export function SkillSection() {
+    return (
+        <div className={styles.skillSection}>
+            <h2 className={styles.mainText}>
+                Discover new possibilities
+            </h2>
+
+            <div className={styles.subText}>
+                Browse skills you're interested in and take a quiz to earn your digital badge.
+            </div>
+            
+            <div className={styles.show}>
+
+            </div>  {/*ไว้ใส่อนิเม*/}
+        </div>
+    );
+};

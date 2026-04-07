@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
-import { LandingPageNavbar } from "@/app/_components/landingPage";
 import "./globals.css";
 
 
@@ -23,15 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable}`}>
         <body>
-          <LandingPageNavbar />
-            
+
           <main>
             {children}
           </main>
 
-          <footer>
-
-          </footer>
         </body>
     </html>
   );

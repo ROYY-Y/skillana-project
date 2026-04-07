@@ -1,0 +1,131 @@
+/*navbar*/
+
+.navbar {     /*แถบ navbar*/
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px; /*18px*/
+  font-weight: bold;
+  max-width: 100%;
+  height: 60px;
+  background: linear-gradient(90deg, rgba(47, 33, 85, 1) 20%, rgba(131, 63, 194, 1) 100%);
+  border-bottom: solid #7050B3 1px; /*ใส่ไว้ดูเส้นขอบก่อน*/
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {       /*กล่องโลโก้*/
+  margin: 0 0 0 30px;
+  width: 140px;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+}
+
+.menu {     /*โครงแถบเมนูหลัก*/
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+
+.menu li, .auth_box li {    /*ปิดเส้นนำทาง*/
+  list-style: none;
+}
+
+.menu li {    /*ขนาดแต่ละแถบเมนู*/
+  width: 130px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.menu li:nth-child(3){   /*How its work*/
+  width: 170px;
+}
+
+.menu li a {    /*ปรับโครงเมนูด้านใน*/
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu li::after {   /*เส้นใต้เมนู*/
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 6px;
+  background-color: #5F28CD;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.menu li:hover::after {
+  width: 100%;
+}
+
+.auth_box {       /*กล่องลงทะเบียน*/
+  display: flex;
+  margin-right: 60px;
+  align-items: center;
+  gap: 15%;
+  white-space: nowrap;
+}
+
+.login_btn {      /*เข้าสู่ระบบ*/
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #5F28CD;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sign_up:hover {    /*สมัครแอคเคาท์*/
+  text-decoration: underline white 2px;
+}
+
+.login_btn:hover {
+  background-color: #461b9c;
+}
+
+/*SkillSection*/
+
+.skillSection {       /*กล่อง Discover new possibilities*/
+  width: 96.5%;
+  height: 900px;
+  margin: 40px auto;
+  padding: 110px 340px;
+}
+
+.skillSection .mainText {     /*ข้อความหลัก*/
+  width: 300px;
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+
+.skillSection .subText {      /*ข้อความรอง*/
+  width: 380px;
+  font-size: 18px;
+  margin-bottom: 80px;
+}
+
+.skillSection .show {         /*กล่องอนิเมชั่น*/
+  background-color: rgba(128, 128, 128, 0.238);
+  border: solid white 1px;
+  border-radius: 10px;
+  height: 400px;
+}

@@ -1,0 +1,71 @@
+/*Hero Section*/
+
+.hero {                         /*กล่อง Explore skills....*/
+    background-color: #20092D;
+    width: 96.5%;
+    height: 625px;
+    margin: 40px auto;
+    border-radius: 10px;
+    text-align: center;
+    padding: 70px;
+}
+
+.hero .mainText {               /*ข้อความหลัก*/
+    font-size: 40px;
+    width: 600px;
+    margin: 0 auto 18px auto;
+}
+
+
+.hero .subText {                 /*ข้อความรอง*/
+    font-size: 20px;
+    margin: 0 auto 30px auto;
+    width: 510px;
+    justify-content: center;
+}
+
+.hero .btn {                     /*ปุ่มเริ่ม*/
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #5F28CD;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background-color: #461b9c;
+}
+
+/*Resume Section*/
+
+.resumeSection {                    /*กล่อง Build your resume...*/
+    background-color: #20092D;
+    width: 96.5%;
+    height: 1600px;
+    margin: 40px auto;
+    padding: 130px 340px;
+}
+
+.resumeSection .mainText {          /*ข้อความหลัก*/
+    width: 300px;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.resumeSection .subText {           /*ข้อความรอง*/
+    width: 420px;
+    font-size: 18px;
+    margin-bottom: 80px;
+}
+
+.resumeSection .show {              /*กล่องอนิเมชั่น*/
+    background-color: rgba(128, 128, 128, 0.238);
+    border: solid white 1px;
+    border-radius: 10px;
+    height: 1000px;
+}

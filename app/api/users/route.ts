@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 
-export async function POST(req : Request){ // Craete Account
+export async function POST(req : Request){ // Create Account
     try{
         await dbConnect();
         const {firstName, lastName, email, password} = await req.json();

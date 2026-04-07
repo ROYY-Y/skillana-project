@@ -107,8 +107,8 @@ const UserSchema = new Schema<IUser>(
     password: { type: String, required: true },
     aboutMe: String,
     contact: {
-      phoneNumber: String,
-      address: String
+      phoneNumber: { type: String, default: "" }, // หรือใส่แค่ default: ""
+      address: { type: String, default: "" }
     },
     education: [
       {

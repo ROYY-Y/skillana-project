@@ -10,7 +10,7 @@ export default function ProfileImg() {
                 </div>
                 <div id="profile-name-wrapper" className={imgstyle.nameWrapper}>
                     <p id="profile-name" className={imgstyle.name}>John Doe</p>
-                    <img src="edit.png" alt="Edit Profile" id="edit-profile" className={imgstyle.editIcon} />
+                   
                 </div>
             </div>
         </>

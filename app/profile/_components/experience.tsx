@@ -3,10 +3,19 @@
 import pstyle from "../profile.module.css"
 import estyle from "./experience.module.css"
 import { useState } from "react";
+
+interface Experience {
+    id: number;
+    title: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+}
+
 export default function Exp() {
 
-    
-    const [expList, setExpList] = useState<object[]>([
+    const [status, setStatus] = useState<boolean>(false);
+    const [expList, setExpList] = useState<Experience[]>([
         {
             id : Date.now(),
             title: "",
@@ -30,17 +39,16 @@ export default function Exp() {
     
   return (
     <>
-    <div id = "experience-container" className={pstyle.head} style={{ fontSize: '32px', fontWeight: 'bold' }}  >    
+    <div id = "experience-container" className={pstyle.head} >    
         <div id ="exp-header" className={estyle.expHeader}>
-            <h1 >Experience</h1> 
-            <h1 id="exp-count">{expList.length}/5</h1>
+            <h1>Experience {expList.length}/5</h1> 
             <div className={estyle.addIcon}>
                 <h1 id="exp-add" onClick={addNewExp} className = {limitExp ? estyle.disabled : ""}>+</h1>
             </div>
         </div>
             
 
-        {expList.map((exp, index) => (
+        {expList.map((exp : {id : string | number }, index ) => (
 
         
         <div id = "experience-content" className={estyle.expBox} >

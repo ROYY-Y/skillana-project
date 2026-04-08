@@ -3,14 +3,14 @@
     display : block;
     margin-top: 10px;
     width : 625px;
-    height: 344px;
+    height: 360px;
     background-color: #552597;
     border-radius: 16px;
     border: 1px solid #ffffff99;
 }
 .profileSection{
     display : block;
-    font-size : 20px;
+    font-size : 18px;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
     margin-top : 20px;
@@ -30,7 +30,7 @@
 }
 
 .head{
-    font-size : 32px;
+    font-size : 24px;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
 }
@@ -73,6 +73,41 @@
     cursor: pointer;
     margin-bottom : 60px;
 }
+.editButtonWrapper {
+    display: flex;
+  
+    justify-content: center;
+    align-items: center;
+}
+/*------------------------Save and Reset Buttons------------------------------*/
+.editButton {
+    width: 120px;
+    height: 40px;
+    font-size : 16px;
+    font-weight: bold;
+    background-color: rgb(54, 136, 54);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.editButton:hover {
+    background-color: rgb(54, 136, 54, 0.8);
+}
+.editButton:active {
+    scale : 0.98;
+}
+/*------------------------END Save and Reset Buttons------------------------------*/
+
+
+
+
+
+
+
+
+
+
 
 
 /*------------------------Set Layout in Profile Pages------------------------------*/
@@ -85,10 +120,15 @@
     
 }
 .profileHeader {
-    display : block;
+   display: flex;             /* Changed from inline-flex */
+    align-items: center;       /* Vertically centers image and button */
+    justify-content: center; /* Pushes image to left, button to right */
     width: 100%;
-    font-family: 'Poppins', sans-serif; 
-    margin-left : 300px;
+    gap : 600px;
+    
+    padding: 20px 30px;           /* Adds space on sides instead of margin-left */
+    box-sizing: border-box;    /* Ensures padding doesn't break width */
+    font-family: 'Poppins', sans-serif;
 }
 .generalInfo{
     display : grid;

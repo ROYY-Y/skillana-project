@@ -3,6 +3,7 @@
     margin-top : 10px;
     width : 1281px;
     height: 270px;
+    margin-bottom: 32px;
     background-color: #552597;
     border-radius: 16px;
     border: 1px solid #ffffff99;
@@ -10,15 +11,15 @@
 
 .expHeader{
     display : flex;
-    align-items : baseline;
+    justify-content: space-between;
+    align-items : center;
     width: 100%;
     font-family: 'Poppins', sans-serif;
     gap : 16px;
 }
 
 .expHeaderText {
-    
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
 }
 .dateContent{  /*Input Field Styles*/
@@ -44,7 +45,9 @@
     height: auto;
 }
 .addIcon{
-    margin-left: 60%;
+    display : flex;
+    justify-content: flex-end !important;
+    
     cursor: pointer;
     font-size: 32px;
 }

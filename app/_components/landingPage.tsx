@@ -16,9 +16,9 @@ export function LandingPageNavbar() {
         </ul>
 
         <ul className={styles.auth_box}>
-            <li><Link href="/login" className={styles.sign_up}>Sign up</Link></li>
+            <li><Link href="/create-account" className={styles.sign_up}>Sign up</Link></li>
             <li>
-                <Link href="/create-account"><button className={styles.login_btn}>Login</button></Link>
+                <Link href="/login"><button className={styles.login_btn}>Login</button></Link>
             </li>
         </ul>
 

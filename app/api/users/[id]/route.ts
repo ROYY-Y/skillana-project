@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/db";
-import { User } from "@/lib/models/schema"
+import { User } from "@/lib/models/schema";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
@@ -25,8 +25,8 @@ export async function GET(req : Request, { params }: { params: Promise<{ id: str
         return NextResponse.json(user, {status: 200});
 
     } catch (error: any) {
-        console.log("Error : ", error)
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+        console.log("Show user error : ", error);
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
     
 }

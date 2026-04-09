@@ -110,13 +110,12 @@ const UserSchema = new Schema<IUser>(
       phoneNumber: { type: String, default: "" }, // หรือใส่แค่ default: ""
       address: { type: String, default: "" }
     },
-    education: [
-      {
-        level: String,
-        major: String,
-        university: String
-      }
-    ],
+    education: {
+    level: { type: String, default: "" },
+    major: { type: String, default: "" },
+    university: { type: String, default: "" }
+  }
+    ,
     experience: [
       {
         title: String,

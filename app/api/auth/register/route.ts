@@ -10,13 +10,13 @@ export async function POST(req : Request){ // Create Account
         const {firstName, lastName, email, password} = await req.json();
 
         if(!firstName || !lastName || !email || !password){
-            return NextResponse.json({error : "Missing information!"}, {status : 400})
+            return NextResponse.json({message : "Missing information!"}, {status : 400})
         }
 
         const existingUser = await User.findOne({email});
         if(existingUser){
             return NextResponse.json(
-                { error: "Email have already existed!" },
+                { message: "Email have already existed!" },
                 { status: 400 }
             );
         }
@@ -47,7 +47,7 @@ export async function POST(req : Request){ // Create Account
     catch(error: any){
         console.log("Register Error : ", error)
         return NextResponse.json(
-      { error: "Internal server error" },
+      { message: "Internal server error" },
       { status: 500 }
     );
     }

@@ -37,11 +37,15 @@ export default function Profile() {
     const decodeToken = token ? jwtDecode(token) : null;
     console.log("Token from localStorage:", token);
     const userId = decodeToken ? (decodeToken as {id : string}).id : null;
-
-     /*if (!token) {
+    
+     if (!token) {
         window.location.href = "/login";
-      }*/
+      }
     const fetchData = async () => {
+      if (!userId || !token) {
+      console.warn("No valid user session found.");
+      return; 
+    }
     try {
       const res = await fetch(`/api/users/${userId}`, {
         method : "GET",
@@ -50,6 +54,11 @@ export default function Profile() {
           "Authorization" : `Bearer ${token}`,
         }  
       })   
+      if (!res.ok) {
+         const errorText = await res.text();
+         console.error("API Error:", errorText);
+         return;
+      }
       const profileData  = await res.json();
       setData(profileData);
 

@@ -13,15 +13,16 @@ export interface Experience {
 
 export interface ProfileData {
     name: string;
+    email: string;
     contact: {
-        email: string;
-        phone: string;
+  
+        phoneNumber: string;
         address: string;
     },
     education: {
-        educationLevel: string;
+        level: string;
         major: string;
-        institution: string;
+        university: string;
     },
     aboutMe: string;
     experience: Experience[];

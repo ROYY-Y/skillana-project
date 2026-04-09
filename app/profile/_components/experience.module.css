@@ -2,7 +2,7 @@
     display : block;
     margin-top : 10px;
     width : 1281px;
-    height: 270px;
+    height: 330px;
     margin-bottom: 32px;
     background-color: #552597;
     border-radius: 16px;
@@ -85,6 +85,8 @@
 
 .profileContent{
     margin-bottom : 2px;
+    resize : none;
+    overflow-y : scroll;
     color : white;
     font-size : 16px;
     padding-top : 10px;
@@ -95,13 +97,28 @@
     height: 120px;
     border-radius: 10px;
     border : 0px ;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 .addIcon h1 {
     cursor: pointer;
     display: inline-block; /* Required for transform to work properly */
     transition: all 0.2s ease; /* Transitions all properties: opacity, transform, etc. */
 }
-
+.removeBtnContainer{
+    display: flex;
+    width: 102%;
+    margin-top: 10px;;
+    justify-content: flex-end;
+}
+.removeBtn {
+    width: 40px;
+    position : absolute;
+    height:40px;
+    margin-right : 40px;
+}
 
 
 

@@ -10,25 +10,22 @@
     width: 98%;
     height: 181px;
     border-radius: 10px;
-    
+     resize: none;
+    overflow: scroll;
+     &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .aboutMeBox{
     display : block;
+   
     width : 1281px;
     height: 234px;
     background-color: #552597;
     border-radius: 16px;
     border: 1px solid #ffffff99;
+   
 }
 
-.aboutMeEdit{
-    position: absolute;
-    right: 40px;
-    top: 90%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width: 24px;
-    height: auto;
-}
 

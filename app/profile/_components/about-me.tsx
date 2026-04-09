@@ -4,7 +4,7 @@ import pstyle from "../profile.module.css"
 
 import { useEditContext } from "./edit";
 export default function AboutMe() {
-    const { isEdit, liveData, saveData, reset, updateTempField, tempData} = useEditContext();
+    const { isEdit, liveData, updateTempField, tempData} = useEditContext();
    
     return (
         <>

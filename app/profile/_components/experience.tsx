@@ -2,101 +2,124 @@
 
 import pstyle from "../profile.module.css"
 import estyle from "./experience.module.css"
-import { useState } from "react";
-
-interface Experience {
-    id: number;
-    title: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-}
+import { useEditContext } from "./edit";
 
 export default function Exp() {
+    // 1. Destructure everything needed from your Context
+    const { 
+        isEdit, 
+        setEditing,
+        liveData, 
+        tempData, 
+        updateExperience, 
+        addExperience, 
+        removeExperience 
+    } = useEditContext();
 
-    const [status, setStatus] = useState<boolean>(false);
-    const [expList, setExpList] = useState<Experience[]>([
-        {
-            id : Date.now(),
-            title: "",
-            startDate: "",
-            endDate: "",
-            description: ""
-        }
-    ]);
-    const limitExp : boolean = expList.length >= 5;
+    // 2. Determine which list to render (Draft or Official)
+    const expList = isEdit ? (tempData.experience || []) : (liveData.experience || []);
+    const limitExp = expList.length >= 5;
     function addNewExp() {
         if (!limitExp) {
-            setExpList([...expList, {
-                id : Date.now(),
-                title: "",
-                startDate: "",
-                endDate: "",
-                description: ""
-            }]);
+            addExperience();
         }
     }
-    
-  return (
-    <>
-    <div id = "experience-container" className={pstyle.head} >    
-        <div id ="exp-header" className={estyle.expHeader}>
-            <h1>Experience {expList.length}/5</h1> 
-            <div className={estyle.addIcon}>
-                <h1 id="exp-add" onClick={addNewExp} className = {limitExp ? estyle.disabled : ""}>+</h1>
+    return (
+        <div id="experience-container" className={pstyle.head}>    
+            <div id="exp-header" className={estyle.expHeader}>
+                <h1>Experience {expList.length}/5</h1> 
+                    <div className={estyle.addIcon}>
+                        <h1 
+                            id="exp-add" 
+                            onClick={() => {addNewExp(); setEditing(true);}} 
+                            className={limitExp ? estyle.disabled : ""}
+                            style={{ cursor: limitExp ? 'not-allowed' : 'pointer' }}
+                        >
+                            +
+                        </h1>
+                    </div>
+                
             </div>
-        </div>
-            
 
-        {expList.map((exp : {id : string | number }, index ) => (
+            {expList.map((exp, index) => (
+                <div key={exp.id} id="experience-content" className={estyle.expBox}>
+                    
+                        {expList.length > 1 && <div className={estyle.removeBtnContainer}>
+                            <img src="close.png" alt="removeButton"
+                            className={estyle.removeBtn} 
+                            onClick={() => {removeExperience(exp.id); setEditing(true)} } >
+                           
+                                </img>
+                            </div>
+                        }
+                    
 
-        
-        <div id = "experience-content" className={estyle.expBox} >
-            <div key = {exp.id} id = {`experience-content-${index}`} className={estyle.topContainer} >
-
-                    <div id = "Title" className={pstyle.profileSection} >
-                        <h2>Title</h2>
+                    <div id={`experience-content-${index}`} className={estyle.topContainer}>
+                        {/* Title Section */}
+                        <div id="Title" className={pstyle.profileSection}>
+                            <h2>Title</h2>
                             <div className={pstyle.Wrapper}>
-                                <input type="email" id="email" className={pstyle.profileContent} placeholder="killAna@gmail.com" />
-                                <img src ="edit.png" alt="edit" className={estyle.editIcon} />
+                                <input 
+                                    type="text" 
+                                    className={pstyle.profileContent} 
+                                    placeholder="Software Engineer" 
+                                    readOnly={!isEdit}
+                                    value={exp.title}
+                                    onChange={(e) => updateExperience(exp.id, "title", e.target.value)}
+                                />
+                                {!isEdit && <img src="edit.png" alt="view" className={estyle.editIcon} />}
                             </div>  
-                    </div>
-                        
+                        </div>
 
-                    <div id = "Start-Date" className={pstyle.profileSection} >
-                        <h2>Start Date</h2>
-                        <div className={pstyle.Wrapper}>
-                            <input type="tel" id="phone" className={estyle.dateContent} placeholder="08x-xxx-xxxx" />
-                            <img src ="edit.png" alt="edit" className={estyle.editIcon} />
+                        {/* Start Date Section */}
+                        <div id="Start-Date" className={pstyle.profileSection}>
+                            <h2>Start Date</h2>
+                            <div className={pstyle.Wrapper}>
+                                <input 
+                                    type="text" 
+                                    className={estyle.dateContent} 
+                                    placeholder="Jan 2023" 
+                                    readOnly={!isEdit}
+                                    value={exp.startDate}
+                                    onChange={(e) => updateExperience(exp.id, "startDate", e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        {/* End Date Section */}
+                        <div id="End-Date" className={pstyle.profileSection}>
+                            <h2>End Date</h2>
+                            <div className={pstyle.Wrapper}>
+                                <input 
+                                    type="text" 
+                                    className={estyle.dateContent} 
+                                    placeholder="Present" 
+                                    readOnly={!isEdit}
+                                    value={exp.endDate}
+                                    onChange={(e) => updateExperience(exp.id, "endDate", e.target.value)}
+                                />
+                            </div>
                         </div>
                     </div>
 
-
-                    <div id = "End-Date" className={pstyle.profileSection} >
-                        <h2>End Date</h2>
+                    {/* Description Section */}
+                    <div id="Text" className={estyle.description}>
+                        <h2>Description</h2>
                         <div className={pstyle.Wrapper}>
-                            <input type="text" id="address" className={estyle.dateContent} placeholder="123 Main St, City, State 12345" />
-                            <img src ="edit.png" alt="edit" className={estyle.editIcon} />
+                            <textarea 
+                                className={estyle.profileContent} 
+                                placeholder="Describe your responsibilities..." 
+                                readOnly={!isEdit}
+                                value={exp.description}
+                                onChange={(e) => updateExperience(exp.id, "description", e.target.value)}
+                            />
                         </div>
                     </div>
-            </div>
-
-            <div id = "Text" className={estyle.description} >
-                <div className={pstyle.Wrapper}>
-                    <textarea id="address" className={estyle.profileContent} placeholder="123 Main St, City, State 12345" />
-                    <img src ="edit.png" alt="edit" className={estyle.descriptionEdit} />
                 </div>
-            </div>
-
+            ))}
         </div>
-        ))}
+    );
 
-
-    </div>
-    </>
-  );
+   
+    
 }
-
-
-        
-            

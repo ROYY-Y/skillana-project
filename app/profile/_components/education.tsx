@@ -14,9 +14,9 @@ export default function Education() {
                 <h2>Education Level</h2>
                     <div className={style.Wrapper}>
                         <input type="text" id="education" className={style.profileContent} placeholder="Bachelor's Degree"
-                                /*readOnly={!isEdit}
+                                readOnly={!isEdit}
                                 value={data?.level || ""}
-                                onChange={(e) => updateNestedField('education', 'level', e.target.value)}*/
+                                onChange={(e) => updateNestedField('education', 'level', e.target.value)}
                         />
                        
                     </div>  
@@ -27,9 +27,9 @@ export default function Education() {
                 <h2>Major</h2>
                 <div className={style.Wrapper}>
                     <input type="text" id="major" className={style.profileContent} placeholder="Computer Science"
-                                /*readOnly={!isEdit}
+                                readOnly={!isEdit}
                                 value={data?.major || ""}
-                                onChange={(e) => updateNestedField('education', 'major', e.target.value)}*/
+                                onChange={(e) => updateNestedField('education', 'major', e.target.value)}
                     />
                    
                 </div>
@@ -40,9 +40,9 @@ export default function Education() {
                 <h2>School/University</h2>
                 <div className={style.Wrapper}>
                     <input type="text" id="school" className={style.profileContent} placeholder="Kmutt"
-                        /*readOnly={!isEdit}
+                        readOnly={!isEdit}
                                 value={data?.university || ""}
-                                onChange={(e) => updateNestedField('education', 'university', e.target.value)}*/
+                                onChange={(e) => updateNestedField('education', 'university', e.target.value)}
                     />
                    
                 </div>

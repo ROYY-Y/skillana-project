@@ -4,6 +4,7 @@ import { useState, useContext, createContext, ReactNode } from "react";
 
 // --- Interfaces ---
 export interface Experience {
+    _id? : string;
     id: number;
     title: string;
     startDate: string;
@@ -12,7 +13,8 @@ export interface Experience {
 }
 
 export interface ProfileData {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     contact: {
   
@@ -27,44 +29,61 @@ export interface ProfileData {
     aboutMe: string;
     experience: Experience[];
 }
+const getExpId = (exp: Experience) => String(exp._id ?? exp.id);
 
-// 1. Define the Context Type Interface
+// --- Context ---
 interface EditContextType {
     isEdit: boolean;
     setEditing: (val: boolean) => void;
     liveData: ProfileData;
     tempData: ProfileData;
     updateTempField: (field: keyof ProfileData, value: any) => void;
-    updateNestedField: (section: 'contact' | 'education', field: string, value: string) => void
-    updateExperience: (id: number, field: keyof Experience, value: string) => void;
+    updateNestedField: (section: 'contact' | 'education', field: string, value: string) => void;
+    updateExperience: (id: any, field: keyof Experience, value: string) => void;
     addExperience: () => void;
-    removeExperience: (id: number) => void;
+    removeExperience: (id: any) => void;
     saveData: () => Promise<void>;
     reset: () => void;
 }
 
-// 2. Initialize the Context with the Interface
-// We use 'as EditContextType' to provide a dummy initial object
-const editContext = createContext<EditContextType>({
-    isEdit: false,
-    setEditing: () => { },
-    liveData: {} as ProfileData,
-    tempData: {} as ProfileData,
-    updateTempField: () => { },
-    updateNestedField: () => { },
-    updateExperience: () => { },
-    addExperience: () => { },
-    removeExperience: () => { },
-    saveData: async () => { }, // Correctly defined as an async dummy
-    reset: () => { }
-});
+const editContext = createContext<EditContextType>({} as EditContextType);
 
-// --- Provider Component ---
+// --- Provider ---
 export const EditProvider = ({ children, initialData }: { children: ReactNode, initialData: ProfileData }) => {
     const [isEdit, setIsEdit] = useState(false);
-    const [liveData, setLiveData] = useState<ProfileData>(initialData);
-    const [tempData, setTempData] = useState<ProfileData>(initialData);
 
+    // ✅ Ensure at least 1 experience always exists
+    const ensureDefaultExp = (data: ProfileData): ProfileData => {
+    // ✅ remove completely empty experiences
+    const cleaned = (data.experience || []).filter(exp =>
+        exp.title?.trim() ||
+        exp.startDate?.trim() ||
+        exp.endDate?.trim() ||
+        exp.description?.trim()
+    );
+
+    // ✅ if nothing valid → create ONE default
+    if (cleaned.length === 0) {
+        return {
+            ...data,
+            experience: [{
+                id: Date.now(),
+                title: "",
+                startDate: "",
+                endDate: "",
+                description: ""
+            }]
+        };
+    }
+
+    return {
+        ...data,
+        experience: cleaned
+    };
+};
+
+    const [liveData, setLiveData] = useState<ProfileData>(ensureDefaultExp(initialData));
+    const [tempData, setTempData] = useState<ProfileData>(ensureDefaultExp(initialData));
     const updateTempField = (field: keyof ProfileData, value: any) => {
         setTempData(prev => ({ ...prev, [field]: value }));
         setIsEdit(true);
@@ -78,37 +97,59 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
         setIsEdit(true);
     };
 
-    const updateExperience = (id: number, field: keyof Experience, value: string) => {
-        const updatedExp = tempData.experience.map(exp => 
-            exp.id === id ? { ...exp, [field]: value } : exp
-        );
-        setTempData(prev => ({ ...prev, experience: updatedExp }));
+    const updateExperience = (id: any, field: keyof Experience, value: string) => {
+        const targetId = String(id);
+
+        setTempData(prev => ({
+            ...prev,
+            experience: prev.experience.map(exp =>
+                getExpId(exp) === targetId
+                    ? { ...exp, [field]: value }
+                    : exp
+            )
+        }));
+
         setIsEdit(true);
     };
 
+
     const addExperience = () => {
-        if (tempData.experience.length >= 5) return;
+    setTempData(prev => {
+       
+        const realExpCount = prev.experience.filter(exp => 
+           exp.title?.trim() || exp.description?.trim() || (exp.id && !exp._id)
+        ).length;
+
+        if (realExpCount >= 5) return prev;
         
         const newExp: Experience = {
-            id: Date.now(),
+            id: Date.now(), 
             title: "",
             startDate: "",
             endDate: "",
             description: ""
         };
 
-        setTempData(prev => ({ ...prev, experience: [...prev.experience, newExp] }));
+        return { ...prev, experience: [...prev.experience, newExp] };
+    });
+    setIsEdit(true);
+};
+
+    const removeExperience = (id: any) => {
+        const targetId = String(id);
+
+        setTempData(prev => {
+            if (prev.experience.length <= 1) return prev;
+
+            const filtered = prev.experience.filter(exp =>
+                getExpId(exp) !== targetId
+            );
+
+            return { ...prev, experience: filtered };
+        });
+
         setIsEdit(true);
     };
-
-    const removeExperience = (id: number) => {
-        setTempData(prev => ({
-            ...prev,
-            experience: prev.experience.filter(exp => exp.id !== id)
-        }));
-        setIsEdit(true);
-    };
-
     const saveData = async () => {
     try {
         const token = localStorage.getItem("token");

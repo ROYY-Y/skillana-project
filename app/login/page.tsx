@@ -8,9 +8,6 @@ export default function Login(){
        <main className={style.mainBox}>
             
             <LeftBox></LeftBox>
-            
-            <div style={{width : ".1em", backgroundColor : "black"}}></div>
-            
             <section className={`${style.rightBox}`}>
                 
                 <div style={{display : "flex", flexDirection : "column" , justifyContent : "center", alignItems : "center"}}>

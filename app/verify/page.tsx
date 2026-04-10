@@ -12,8 +12,6 @@ export default function Login(){
             
             <LeftBox></LeftBox>
             
-            <div style={{width : ".1em", backgroundColor : "black"}}></div>
-            
             <section className={`${style.rightBox}`}>
                 <img className= {style.otpLogo} src={"./otp-logo.png"}></img>
             

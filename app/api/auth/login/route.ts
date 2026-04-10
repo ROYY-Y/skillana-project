@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 export async function POST(req : Request){
-
     try{
         await dbConnect();
         const {email, password} = await req.json();
@@ -24,7 +23,7 @@ export async function POST(req : Request){
         process.env.JWT_SECRET!, 
         { expiresIn: '1d' }
         );
-
+        
         return Response.json({
             message: "Login successful",
             token,

@@ -1,0 +1,42 @@
+.badgeSection {                    /*กล่อง Build your resume...*/
+    width: 96.5%;
+    height: 775px;
+    margin: 40px auto;
+    padding: 130px 340px;
+    border-radius: 10px;
+}
+
+.mainText {          /*ข้อความหลัก*/
+    width: 350px;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.subText {           /*ข้อความรอง*/
+    width: 420px;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: #5F28CD;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.collection{              /*ที่โชว์badge*/
+    border-radius: 10px;
+    height: 200px;
+    margin-top: 80px;
+}
+
+.base {
+    margin: 185px 0 0 -70px;
+    background-color: #4D256E;
+    width: 110%;
+    height: 12px;
+    border-radius: 10px;
+    box-shadow: 5px 3px 5px 0px rgba(0, 0, 0, 0.4);
+}

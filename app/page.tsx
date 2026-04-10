@@ -5,7 +5,7 @@ import { LandingPageNavbar, SkillSection } from "./_components/landingPage";
 export default function LandingPage() {
     return(
         <div>
-            <main className={styles.main}>
+            <main>
                 <LandingPageNavbar />
 
                 <Hero_section />

@@ -48,14 +48,6 @@
   width: 170px;
 }
 
-.menu li a {    /*ปรับโครงเมนูด้านใน*/
-  width: 100%;
-  height: 100%; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .menu li::after {   /*เส้นใต้เมนู*/
   content: "";
   position: absolute;

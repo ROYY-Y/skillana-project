@@ -4,15 +4,15 @@ import Link from 'next/link';
 export function LandingPageNavbar() {
   return (
     <nav className={styles.navbar}>
-        <a href="" className={styles.logo}>
+        <Link href="" className={styles.logo}>
             <img src="/SkillAna.png" alt="SkillANA Logo"/>
-        </a>
+        </Link>
 
         <ul className={styles.menu}>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Badges</a></li>
-            <li><a href="#">How it Works</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><Link href="#">Features</Link></li>
+            <li><Link href="#">Badges</Link></li>
+            <li><Link href="#">How it Works</Link></li>
+            <li><Link href="#">About Us</Link></li>
         </ul>
 
         <ul className={styles.auth_box}>

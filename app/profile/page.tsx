@@ -1,9 +1,9 @@
 'use client'
-import AboutMe from "./_components/about-me";
-import Contact from "./_components/contact"
-import Education from "./_components/education";
-import Exp from "./_components/experience";
-import ProfileImg from "./_components/profile-img";
+import AboutMe from "./_components/aboutme/about-me";
+import Contact from "./_components/genInfo/contact"
+import Education from "./_components/genInfo/education";
+import Exp from "./_components/experience/experience";
+import ProfileImg from "./_components/profileImg/profile-img";
 import Navbar from "../_global_components/authen_pages/login_nav";
 import style from "./profile.module.css"
 import Popup from "./_components/popup/popup";

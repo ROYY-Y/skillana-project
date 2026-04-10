@@ -7,8 +7,8 @@ export interface Experience {
     _id? : string;
     id: number;
     title: string;
-    startDate: string;
-    endDate: string;
+    startDate: string | Date;
+    endDate: string | Date;
     description: string;
 }
 
@@ -16,6 +16,7 @@ export interface ProfileData {
     firstName: string;
     lastName: string;
     email: string;
+    profileImg : string;
     contact: {
   
         phoneNumber: string;
@@ -39,7 +40,7 @@ interface EditContextType {
     tempData: ProfileData;
     updateTempField: (field: keyof ProfileData, value: any) => void;
     updateNestedField: (section: 'contact' | 'education', field: string, value: string) => void;
-    updateExperience: (id: any, field: keyof Experience, value: string) => void;
+    updateExperience: (id: any, field: keyof Experience, value: any) => void;
     addExperience: () => void;
     removeExperience: (id: any) => void;
     saveData: () => Promise<void>;
@@ -57,8 +58,8 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
     // ✅ remove completely empty experiences
     const cleaned = (data.experience || []).filter(exp =>
         exp.title?.trim() ||
-        exp.startDate?.trim() ||
-        exp.endDate?.trim() ||
+        exp.startDate ||
+        exp.endDate ||
         exp.description?.trim()
     );
 
@@ -97,7 +98,7 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
         setIsEdit(true);
     };
 
-    const updateExperience = (id: any, field: keyof Experience, value: string) => {
+    const updateExperience = (id: any, field: keyof Experience, value: any) => {
         const targetId = String(id);
 
         setTempData(prev => ({

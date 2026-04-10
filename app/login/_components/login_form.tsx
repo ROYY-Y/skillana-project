@@ -3,17 +3,35 @@ import InputComponent from "@/app/_global_components/authen_pages/login_input"
 import Link from "next/link"
 import { useRef } from "react"
 import style from "./login_form.module.css"
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Form(){
-
     const emailRef = useRef<HTMLInputElement>(null)
     const passRef = useRef<HTMLInputElement>(null)
-
-    function handleSubmit(){
+    const router = useRouter();
+    useEffect(()=>{
+        localStorage.removeItem("token");
+    }, []);
+    async function handleSubmit(){
         const email = emailRef.current?.value
         const pass = passRef.current?.value
 
-        console.log({ email, pass });
+        const res = await fetch("/api/auth/login",{
+            method : "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password : pass}),
+        })
+
+        const data = await res.json();
+
+        if(res.ok){
+            localStorage.setItem("token", data.token);
+            alert("Login สำเร็จ");
+            router.push("/");
+        }else{
+            alert(data.message || "มีบางอย่างผิดพลาด");
+        }
     }
 
     return(

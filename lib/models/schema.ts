@@ -39,6 +39,7 @@ export interface IUser extends Document {
   badges: IUserBadge[];
   createdAt: Date;
   updatedAt: Date;
+  profileImg?: string;
 }
 
 export interface IBadgeCategory extends Document {
@@ -110,13 +111,16 @@ const UserSchema = new Schema<IUser>(
       phoneNumber: { type: String, default: "" }, // หรือใส่แค่ default: ""
       address: { type: String, default: "" }
     },
-    education: [
-      {
-        level: String,
-        major: String,
-        university: String
-      }
-    ],
+    education: {
+    level: { type: String, default: "" },
+    major: { type: String, default: "" },
+    university: { type: String, default: "" }
+  },
+  profileImg : {
+      type : String,
+      default : "",
+  }
+    ,
     experience: [
       {
         title: String,
@@ -135,6 +139,7 @@ const UserSchema = new Schema<IUser>(
     ]
   },
   { timestamps: true } // สร้าง createdAt และ updatedAt ให้อัตโนมัติ
+  
 );
 
 // --- 3. Models ---

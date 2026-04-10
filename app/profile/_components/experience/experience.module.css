@@ -1,0 +1,249 @@
+.expBox{
+    display : block;
+    margin-top : 10px;
+    width : 1281px;
+    height: 330px;
+    margin-bottom: 32px;
+    background-color: #552597;
+    border-radius: 16px;
+    border: 1px solid #ffffff99;
+    position : relative;
+}
+
+.expHeader{
+    display : flex;
+    justify-content: space-between;
+    align-items : center;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    gap : 16px;
+}
+
+.expHeaderText {
+    font-size: 24px;
+    font-weight: bold;
+}
+.dateContent{  /*Input Field Styles*/
+    margin-bottom : 2px;
+    color : white;
+    font-size : 16px;
+    padding-left : 20px;
+    padding-right : 20px;
+    background-color: #3A1C63;
+    width: 316px;
+    height: 50px;
+    border-radius: 10px;
+    border : 0px ;
+}
+
+.editIcon{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: auto;
+}
+.addIcon{
+    display : flex;
+    justify-content: flex-end !important;
+    
+    cursor: pointer;
+    font-size: 32px;
+}
+
+.topContainer{
+    display : flex;
+    align-items: baseline;
+    justify-content : flex-start;
+    gap : 10px;
+    align-items : center;
+}
+
+
+:global(.react-datepicker) {
+  font-size: 32px;
+}
+
+:global(.react-datepicker__month-container) {
+  width: 500px;
+}
+
+
+
+:global(.react-datepicker__month-text) {
+  padding : 25px 150px 25px 10px;;
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  font-size: 24px;
+}
+:global(.react-datepicker__month) {
+  margin: 0;
+}
+
+:global(.react-datepicker__month-wrapper) {
+  display: flex;
+  justify-content: space-between;
+  
+}
+:global(.react-datepicker__current-month),
+:global(.react-datepicker-year-header) {
+  font-size: 32px !important; /* Huge year title */
+  font-weight: 800 !important;
+ 
+}
+/* 1. Make the hit-area (the button) much larger */
+:global(.react-datepicker__navigation) {
+  width: 60px !important;
+  height: 60px !important;
+  top: 10px !important; /* Adjust this to move the arrows up or down */
+  overflow: visible !important; /* This prevents the "blinding" */
+}
+
+/* 2. Style the base icon container */
+:global(.react-datepicker__navigation-icon) {
+  font-size: 20px !important;
+  overflow: visible !important;
+}
+
+/* 3. The Actual Arrow (The Pseudo-element) */
+:global(.react-datepicker__navigation-icon::before) {
+  content: '' !important;
+  display: block !important;
+  border-width: 6px 6px 0 0 !important; 
+  border-color: black !important; 
+  border-style: solid !important;
+  width: 20px !important; /* Large arrow size */
+  height: 20px !important;
+  position: absolute !important;
+  top: 5px !important;
+  left: 50% !important;
+}
+
+/* 4. Directional Rotation (CRITICAL - makes it look like an arrow) */
+:global(.react-datepicker__navigation-icon--previous::before) {
+  transform: translate(-50%, -50%) rotate(-135deg) !important;
+}
+
+:global(.react-datepicker__navigation-icon--next::before) {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+:global(.react-datepicker__close-icon) {
+  padding: 0 10px 0 0 !important; /* Give it some breathing room */
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 2. Style the actual "X" button circle */
+:global(.react-datepicker__close-icon::after) {
+  background-color: #ff4d4f !important; /* Optional: Change color to a soft red or your theme color */
+  font-size: 32px !important;           /* This makes the X bigger */
+  height: 24px !important;              /* Size of the circle */
+  width: 24px !important;               /* Size of the circle */
+  content: "×" !important;              /* Using a bigger multiplication sign */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+}
+
+/* 3. Hover effect (optional but nice) */
+:global(.react-datepicker__close-icon:hover::after) {
+  background-color: #d9363e !important;
+  transform: scale(1.1);
+}
+.description{  
+    margin-bottom : 2px;
+    color : white;
+    font-size : 16px;
+    margin-left: 20px;
+    margin-top : 10px;
+    
+    width: 97.2%;
+    height: 120px;
+    border-radius: 10px;
+    border : 0px ;
+}
+.descriptionEdit{
+    position: absolute;
+    right: 20px;
+    top: 88%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: auto;
+}
+
+.profileContent{
+    margin-bottom : 2px;
+    resize : none;
+    overflow-y : scroll;
+    color : white;
+    font-size : 16px;
+    padding-top : 10px;
+    padding-left : 20px;
+    margin-top : 10px;
+    background-color: #3A1C63;
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    border : 0px ;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.addIcon h1 {
+    cursor: pointer;
+    display: inline-block; /* Required for transform to work properly */
+    transition: all 0.2s ease; /* Transitions all properties: opacity, transform, etc. */
+}
+.removeDate {
+    width: 40px;
+    position : absolute;
+    background-color: transparent;
+    color: white;
+    font-size : 24px;
+    border : none;
+    border-radius: 50%;
+    
+    margin-left : 270px;
+    
+}
+.removeBtnContainer{
+    display: flex;
+    width: 102%;
+    margin-top: 10px;;
+    justify-content: flex-end;
+}
+.removeBtn {
+    width: 40px;
+    position : absolute;
+    background-color: #ff4d4f;
+    color: white;
+    font-size : 28px;
+    font-weight: bold;
+    border-radius: 50%;
+    height:40px;
+    margin-right : 40px;
+    border : none;
+}
+.removeBtn:hover {
+  background-color: #d9363e !important;
+  transform: scale(1.1);
+}
+
+
+
+.addIcon h1:active:not(.disabledIcon) {
+    transform: scale(0.9);
+}
+.disabled {
+    opacity: 0.3;
+    cursor : not-allowed !important;
+    pointer-events: none;
+}

@@ -1,6 +1,6 @@
 
-import style from "../profile.module.css"
-import { useEditContext } from "./edit";
+import style from "../../profile.module.css"
+import { useEditContext } from "../edit";
 
 export default function Education() {
     const {isEdit, liveData, updateTempField, updateNestedField, tempData} = useEditContext();

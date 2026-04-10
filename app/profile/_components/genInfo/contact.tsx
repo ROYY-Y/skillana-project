@@ -1,5 +1,5 @@
-import style from "../profile.module.css"
-import { useEditContext } from "./edit";
+import style from "../../profile.module.css"
+import { useEditContext } from "../edit";
 
 export default function Contact() {
 const { isEdit, liveData,  updateNestedField, updateTempField, tempData} = useEditContext();

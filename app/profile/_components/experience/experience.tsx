@@ -1,8 +1,11 @@
 'use client'
 
-import pstyle from "../profile.module.css"
+import pstyle from "../../profile.module.css"
 import estyle from "./experience.module.css"
-import { useEditContext } from "./edit";
+import { useEditContext } from "../edit";
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+
 
 const getExpId = (exp : any) => String(exp._id ?? exp.id);
 
@@ -52,14 +55,11 @@ export default function Exp() {
                     <div key={currentId} className={estyle.expBox}>
                         
                         
-                        { expList.length > 1 && (
+                        {expList.length > 1 && (
                             <div className={estyle.removeBtnContainer}>
-                                <img 
-                                    src="close.png" 
-                                    alt="remove"
-                                    className={estyle.removeBtn} 
-                                    onClick={() => removeExperience(currentId)} 
-                                />
+                                <button className={estyle.removeBtn} onClick={() => removeExperience(currentId)}>
+                                    X
+                                </button>
                             </div>
                         )}
 
@@ -72,38 +72,63 @@ export default function Exp() {
                                         className={pstyle.profileContent} 
                                         placeholder="Software Engineer" 
                                         readOnly={!isEdit}
-                                        value={exp.title || ""} // 🔥 FIX: Fallback to empty string
+                                        value={exp.title || ""} 
                                         onChange={(e) => updateExperience(currentId, "title", e.target.value)}
                                     />
                                     
                                 </div>  
                             </div>
 
-                            <div className={pstyle.profileSection}>
+
+ <div className={pstyle.profileSection}>
                                 <h2>Start Date</h2>
                                 <div className={pstyle.Wrapper}>
-                                    <input 
-                                        type="text" 
-                                        className={estyle.dateContent} 
-                                        placeholder="Jan 2023" 
-                                        readOnly={!isEdit}
-                                        value={exp.startDate || ""}
-                                        onChange={(e) => updateExperience(currentId, "startDate", e.target.value)}
-                                    />
+                                    <DatePicker
+                                            selected={exp.startDate ? new Date(exp.startDate) : null}
+                                            onChange={(date: Date | null) => updateExperience(currentId, "startDate", date)}
+
+                                            className={estyle.dateContent}
+                                            wrapperClassName="datePickerWrapper"   
+
+                                            placeholderText="Jan 2023"
+                                            readOnly={!isEdit}
+                                            dateFormat="MMM yyyy"
+                                            showMonthYearPicker
+                                            isClearable
+                                            showMonthDropdown
+                                            showYearDropdown
+                                            dropdownMode="select"
+                                            scrollableYearDropdown
+                                            yearDropdownItemNumber={10}
+                                            withPortal
+                                            />
+                                        {/*<button className={estyle.removeDate} onClick={() => }>X</button>*/}
                                 </div>
-                            </div>
+ </div>
 
                             <div className={pstyle.profileSection}>
                                 <h2>End Date</h2>
                                 <div className={pstyle.Wrapper}>
-                                    <input 
-                                        type="text" 
-                                        className={estyle.dateContent} 
-                                        placeholder="Present" 
-                                        readOnly={!isEdit}
-                                        value={exp.endDate || ""}
-                                        onChange={(e) => updateExperience(currentId, "endDate", e.target.value)}
-                                    />
+                                    <DatePicker
+                                            selected={exp.endDate ? new Date(exp.endDate) : null}
+                                            onChange={(date: Date | null) => updateExperience(currentId, "endDate", date)}
+
+                                            className={estyle.dateContent}
+                                            wrapperClassName="datePickerWrapper"   
+
+                                            placeholderText="Jan 2026"
+                                            readOnly={!isEdit}
+                                            dateFormat="MMM yyyy"
+                                            showMonthYearPicker
+                                            isClearable
+                                            showMonthDropdown
+                                            showYearDropdown
+                                            dropdownMode="select"
+                                            scrollableYearDropdown
+                                            yearDropdownItemNumber={10}
+
+                                            withPortal
+                                            />
                                 </div>
                             </div>
                         </div>

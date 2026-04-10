@@ -1,8 +1,8 @@
 'use client'
 import astyle from "./about-me.module.css"
-import pstyle from "../profile.module.css"
+import pstyle from "../../profile.module.css";
 
-import { useEditContext } from "./edit";
+import { useEditContext } from "../edit";
 export default function AboutMe() {
     const { isEdit, liveData, updateTempField, tempData} = useEditContext();
    

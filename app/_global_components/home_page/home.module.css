@@ -49,6 +49,7 @@
     height: 1600px;
     margin: 40px auto;
     padding: 130px 340px;
+    border-radius: 10px;
 }
 
 .resumeSection .mainText {          /*ข้อความหลัก*/

@@ -1,0 +1,110 @@
+
+
+.firstName {
+    font-size : 32px;
+  
+}
+.lastName {
+    font-size : 32px;
+    
+}
+.nameRow {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 12px;           /* This keeps the gap EXACTLY equal all the time */
+    align-items: center; /* Keeps them vertically aligned */
+    width: 800px;  /* Optional: keeps the container only as wide as the names */
+}
+.inputName {
+    font-size : 24px;
+    margin-left : 40px;
+    width : 400px;
+    height: 40px;
+}
+
+.imgWrapper {
+    position: relative; 
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff99;
+}
+.uploadBtn input {
+    display: none;
+}
+/* Overlay (Upload button container) */
+.uploadBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.6); /* dark layer */
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    justify-items: center;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  
+}
+
+
+.imgWrapper:hover .uploadBtn {
+    opacity: 1;
+}
+.img{
+    width: 350px;
+    height: 250px;
+    margin-left : 50px;
+}
+/* icon inside */
+.overlay {
+    width: 90px;
+    height: 90px;
+     /* make icon white */
+    margin-left : 50px;
+}
+
+.profileContainer {
+    position: relative;
+    width: 550px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+}
+.name {
+    font-size: 32px;
+    font-weight: bold;
+    
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin : 0px;
+    display : inline;
+}
+
+.nameWrapper {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 30px;
+   top : 50%;
+  
+   margin-left : 20px;
+  
+}
+
+.editIcon {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+    width: 40px;
+    height: auto;
+}

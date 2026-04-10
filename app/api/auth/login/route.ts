@@ -20,7 +20,7 @@ export async function POST(req : Request){
             return Response.json({message : "Email or password incorrect"}, {status : 401})
         }
         const token = jwt.sign(
-        { userId: user._id }, //payload
+        { id: user._id }, //payload
         process.env.JWT_SECRET!, 
         { expiresIn: '1d' }
         );

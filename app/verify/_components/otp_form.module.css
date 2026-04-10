@@ -1,6 +1,7 @@
 .formBox{
     display: flex;
     gap: 1em;
+    
 }
 
 .resendBtn{

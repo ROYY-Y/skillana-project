@@ -5,7 +5,7 @@ import Footer from "@/app/_global_components/footer/footer"
 export default function LandingPage() {
     return(
         <div>
-            <main className={styles.main}>
+            <main>
                 <LandingPageNavbar />
 
                 <Hero_section />

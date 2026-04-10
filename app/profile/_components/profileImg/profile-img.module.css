@@ -2,9 +2,18 @@
 
 .firstName {
     font-size : 32px;
+  
 }
 .lastName {
     font-size : 32px;
+    
+}
+.nameRow {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 12px;           /* This keeps the gap EXACTLY equal all the time */
+    align-items: center; /* Keeps them vertically aligned */
+    width: 800px;  /* Optional: keeps the container only as wide as the names */
 }
 .inputName {
     font-size : 24px;
@@ -12,6 +21,7 @@
     width : 400px;
     height: 40px;
 }
+
 .imgWrapper {
     position: relative; 
     flex-shrink: 0;
@@ -73,10 +83,11 @@
 .name {
     font-size: 32px;
     font-weight: bold;
+    
     font-family: 'Poppins', sans-serif;
     color: white;
     margin : 0px;
-
+    display : inline;
 }
 
 .nameWrapper {

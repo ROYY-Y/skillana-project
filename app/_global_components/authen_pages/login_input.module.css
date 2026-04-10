@@ -47,3 +47,11 @@
     bottom: 25%;
     right: 1.5em;
 }
+
+.error{
+    outline: 4px solid red !important;
+}
+
+.inputBox:focus{
+    outline: none;
+}

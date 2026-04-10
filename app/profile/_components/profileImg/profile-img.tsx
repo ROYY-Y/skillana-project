@@ -46,12 +46,14 @@ export default function ProfileImg() {
     <div className={imgstyle.nameWrapper}> 
     {!isEdit ? (
         <>
+        <div className={imgstyle.nameRow}>
             <p className={imgstyle.firstName}>
                 {tempData.firstName || "First Name"}
             </p>
             <p className={imgstyle.lastName}>
                 {tempData.lastName || "Last Name"}
             </p>
+            </div>
         </>
     ) : (
         <>

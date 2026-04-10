@@ -41,7 +41,7 @@ export default function CreateAccountForm(){
             <InputComponent ref = {confirmPassRef} label="Confirm Password" size="large" placeholder="Confirm your password" isPassword = {true}></InputComponent>
             <div style={{display : "flex", flexDirection : "column", gap : '.5em', alignItems : "center"}}>
                 <button className= {style.createBtn} onClick={handleSubmit}>Sign up</button>
-                <p>Already have an account? <Link href= "#" className= {style.login}>Login</Link> </p>
+                <p>Already have an account? <Link href= "/login" className= {style.login}>Login</Link> </p>
             </div>
         </section>
     </>)

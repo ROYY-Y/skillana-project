@@ -4,7 +4,7 @@ import Link from 'next/link';
 export function LandingPageNavbar() {
   return (
     <nav className={styles.navbar}>
-        <Link href="" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
             <img src="/SkillAna.png" alt="SkillANA Logo"/>
         </Link>
 

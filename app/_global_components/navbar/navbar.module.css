@@ -25,7 +25,6 @@
 
 .menu {     /*โครงแถบเมนูหลัก*/
   display: flex;
-  align-items: center;
   gap: 55px;
 }
 
@@ -33,8 +32,6 @@
   width: 140px;
   height: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
@@ -56,8 +53,46 @@
   transform: translateX(-50%);
 }
 
-.menu li:hover::after {
+.navLink {          /*ตัวพื้นฐานแต่ละlink.navLink */
+  color: #b9b9b9;
+  transition: all 0.3s ease;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLink.active {    /*เมื่ออยู่หน้าที่เลือก*/
+  color: #ffffff; 
+}
+
+.menu li:has(.active)::after {    /*เมนูถ้ามี .active ด้วย*/
+  width: 100%; 
+}
+
+.menu li:hover .navLink {       /*เมื่อhover แ่ตละเมนู*/
+  color: #ffffff;
+}
+
+.menu li:hover::after {         /*เมื่อhover จะขึ้นเส้นใต้*/
+  width: 100%;
+}
+
+.menu:hover li:has(.active) .navLink {    /*เมื่อ hover แถบเมนู ตัว.active จะเป็นเหมือนเดิม*/
+  color: #b9b9b9;
+}
+
+.menu:hover li:has(.active)::after {      /*เส้นใต้*/
+  width: 0;
+}
+
+.menu li:has(.active):hover::after {      /*เมื่อ hover ทับตัว .active อีก*/
+  width: 100%;
+}
+
+.menu li:has(.active):hover .navLink {
+  color: #ffffff;
 }
 
 .proflie {

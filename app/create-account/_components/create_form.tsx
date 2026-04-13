@@ -4,6 +4,8 @@ import Link from "next/link"
 import style from "./create_form.module.css"
 import InputComponent from "@/app/_global_components/authen_pages/login_input"
 import { useRef, useState } from "react"
+import { json } from "stream/consumers"
+import { useRouter } from "next/navigation";
 
 export default function CreateAccountForm(){
     const firstNameRef = useRef<HTMLInputElement>(null)
@@ -12,6 +14,8 @@ export default function CreateAccountForm(){
     const passRef = useRef<HTMLInputElement>(null)
     const confirmPassRef = useRef<HTMLInputElement>(null)
     const [isLoading, setIsLoading] = useState(false)
+
+    const router = useRouter()
     const [errors, setErrors] = useState<{
         [key: string]: [boolean, string]
     }>({
@@ -22,7 +26,7 @@ export default function CreateAccountForm(){
         confirmPassword: [false, ""]
     });
 
-    function handleSubmit() {
+    async function handleSubmit() {
         setIsLoading(true);
         
         const data = {
@@ -35,7 +39,6 @@ export default function CreateAccountForm(){
 
         let hasEmptyField = false;
 
-        // 1. เช็คค่าว่างจาก data สดๆ
         Object.entries(data).forEach(([key, value]) => {
             if (!value.trim()) {
                 let msg = `Please enter your ${key}.`;
@@ -49,7 +52,6 @@ export default function CreateAccountForm(){
             }
         });
 
-        // 2. เช็คว่ามี Error อื่นๆ ที่ค้างอยู่ใน State ไหม (เช่น format ผิด)
         const hasExistingError = Object.values(errors).some(v => v[0] === true);
 
         if (hasEmptyField || hasExistingError) {
@@ -57,9 +59,44 @@ export default function CreateAccountForm(){
             return;
         }
 
-        // --- ส่ง API ต่อตรงนี้ ---
-        console.log("Success! Sending data...", data);
+        // ---  API  ---
+        // const res = await fetch("",{
+        //     method : "POST",
+        //     headers: {"Content-Type" : "application/json"},
+        //     body : JSON.stringify({firstName : data.firstName, lastName : data.lastName, email: data.email, password: data.password})
+        // })
 
+        const otpRes = await fetch("http://localhost:3000/api/auth/otp",{
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify({email: data.email})
+        })
+
+        const otpData = await otpRes.json();
+
+        if(!otpRes.ok){
+            setIsLoading(false);
+            console.error(otpData.message)
+            return;
+        }else{
+            const pendingUserRes = await fetch("http://localhost:3000/api/auth/register/pending-users",{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({firstName: data.firstName, lastName: data.lastName, email: data.email, password: data.password})
+            })
+            const pendingData = await pendingUserRes.json()
+
+            if(!pendingUserRes.ok){
+                setIsLoading(false);
+                console.error(pendingData.message)
+                return;
+            }else{
+                sessionStorage.setItem("pending_email", data.email)
+                sessionStorage.setItem("method","register")
+                router.push("/verify")
+            }
+        }
+        // ---------------------
         setIsLoading(false);
     }
 

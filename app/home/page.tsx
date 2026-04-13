@@ -8,7 +8,6 @@ export default function Home() {
         <div>
             <main>
                 <Navbar />
-
                 <Hero_section />
                 <Show_badge />
                 <ResumeSection />

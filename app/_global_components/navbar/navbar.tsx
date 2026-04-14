@@ -24,19 +24,13 @@ export function Navbar() {
 
         <ul className={styles.proflie}>
              <div id="profile-img-wrapper" className={styles.imgWrapper}>
-                    
-                    <UploadButton 
+                <Link href="/profile" className={styles.rightSide}>
+                    <UploadButton
                     endpoint="profileImg"
-                    onClientUploadComplete={(res) => {
-                        router.refresh();
-                    }}
-                    onUploadError={(error : Error) => {
-                          console.error(error);
-                    }}
-                    
-
                      />
-                </div>
+                          
+                </Link>
+            </div>
         </ul>
 
     </nav>

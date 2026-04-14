@@ -7,7 +7,9 @@ import { jwtDecode } from "jwt-decode";
 
 interface Badge {
   id: string;
+  badgeName: string;
   imgUrl: string;
+  earnedAt: string;
 }
 
 interface UserData {
@@ -51,10 +53,6 @@ export function Show_badge() {
         fetchData();
     }, []);
 
-    if (!user) {
-        return <div className={styles.loading}>กำลังโหลดข้อมูล Badge...</div>;
-    }
-
     return (
         <div className={styles.badgeSection}>
             <h1 className={styles.mainText}>
@@ -68,23 +66,30 @@ export function Show_badge() {
             <Link href='' className={styles.btn}>See My Badges</Link>
 
             <div className={styles.collection}>
-                {user.badges && user.badges.length > 0 ? (
+                {!user ? (
+                    <div className={styles.loader}>Loading...</div>
+                ) : user.badges && user.badges.length > 0 ? (
                     <div className={styles.badgeList}>
-                        {user.badges.map((badge) => (
-                            <div key={badge.id} className={styles.badgeItem}>
+                        {[...user.badges]
+                            .sort((a, b) => new Date(b.earnedAt).getTime() - new Date(a.earnedAt).getTime())
+                            .slice(0, 7)
+                            .map((badge: any) => (
+                                <div key={badge.badgeId} className={styles.badgeItem}>
                                 <img 
-                                    src={badge.imgUrl.replace('public', '').replace(/\\/g, '/')} 
-                                    alt="badge icon" 
+                                    src={badge.imgUrl} 
+                                    alt={badge.badgeName} 
+                                    width={120}
+                                    height={120}
                                 />
-                            </div>
-                        ))}
+                                </div>
+                            ))}
                     </div>
                 ) : (
-                    <p>คุณยังไม่มี Badge ในขณะนี้</p>
+                    <p className={styles.none}>- You don't have a badge yet -</p>
                 )}
                 
-            <div className={styles.base}></div>
+                <div className={styles.base}></div>
+            </div>
         </div>
-    </div>
-  );
+    );
 };

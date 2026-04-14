@@ -33,16 +33,38 @@
 }
 
 .collection{              /*ที่โชว์badge*/
-    border-radius: 1.125rem;
-    height: 12.5rem;
-    margin-top: 5rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-height: 13.75rem;
+    position: relative;
+}
+
+.loader {
+    font-size: 1.5rem;
+    margin: 0 auto;
 }
 
 .base {
-    margin: 12.5rem 0 0 -1rem;
     background-color: #4D256E;
     width: 100%;
     height: 0.75rem;
     border-radius: 0.625rem;
     box-shadow: 0.312rem 0.187rem 0.312rem 0 rgba(0, 0, 0, 0.4);
+}
+
+.badgeList {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0.927rem;
+    margin: 0 auto 0.1rem auto;
+    width: 96%;
+
+}
+
+.none {
+    font-size: 1.2rem;
+    margin: 0 auto;
 }

@@ -16,11 +16,14 @@ export default function ProfileImg() {
         <div id="profile-container" className={imgstyle.profileContainer}>
 
                 <div id="profile-img-wrapper" className={imgstyle.imgWrapper}>
-                    <img src={tempData.profileImg || "logo.png"} alt="Profile Picture" id="profile-img" className={imgstyle.img} />
+                    <img src={tempData.profileImg || "user.png"} alt="Profile Picture" id="profile-img" className={imgstyle.img} />
                     <UploadButton 
                     endpoint="profileImg"
                     onUploadBegin={() => {
                         setIsUploading(true);
+                    }}
+                    headers={{
+                            authorization: `Bearer ${localStorage.getItem("token")}`,
                     }}
                     appearance={{
                         button : imgstyle.uploadBtn,

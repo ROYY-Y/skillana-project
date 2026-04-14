@@ -1,15 +1,37 @@
 'use client'
 import styles from './navbar.module.css';
 import Link from 'next/link';
+import { jwtDecode } from 'jwt-decode';
+import { useEffect, useState } from 'react';
 
-import { UploadButton } from '@/app/profile/_components/profileImg/upload';
-
-import { useRouter } from 'next/navigation';
 
 export function Navbar() {
+  const [img, setImg] = useState<string | null>(null);
+  const [name, setName] = useState<string | null>(null)
   
-  const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+  const decoded = jwtDecode(token!) as { id: string };
+   const userID = decoded.id
+    const fetchUser = async () => {
+      const res = await fetch(`/api/users/${userID}`, {
+        headers: {
+          "Content-Type": "application/json",
+           "Authorization": `Bearer ${token}`
+        },
+      });
+
+      const data = await res.json();
+      setImg(data.profileImg);
+      setName(data.firstName)
+    };
+
+    fetchUser();
+  }, []);
+  
   return (
+    
     <nav className={styles.navbar}>
         <Link href="/home" className={styles.logo}>
             <img src="/SkillAna.png" alt="SkillANA Logo"/>
@@ -25,12 +47,15 @@ export function Navbar() {
         <ul className={styles.proflie}>
              <div id="profile-img-wrapper" className={styles.imgWrapper}>
                 <Link href="/profile" className={styles.rightSide}>
-                    <UploadButton
-                    endpoint="profileImg"
-                     />
+                   <img src={img || " "} 
+                   alt = "profile navbar"
+                    className={styles.img}
+                   />
                           
                 </Link>
+               
             </div>
+             <span className={styles.name} title={name || ""}>{name}</span>
         </ul>
 
     </nav>

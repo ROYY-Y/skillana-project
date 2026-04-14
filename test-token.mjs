@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 
-const JWT_SECRET = "SECRET_KEY_FOR_JWT";
+const JWT_SECRET = "SkillAna888";
 const payload = {
     id : "69d79d22ce57ad582bf414de"
 }

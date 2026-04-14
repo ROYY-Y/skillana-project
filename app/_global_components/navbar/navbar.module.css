@@ -62,9 +62,29 @@
 
 .proflie {
     background-color: transparent;
-    width: 150px;
-    border-bottom: solid #7050B3 1px; 
+    position: relative;
     display: flex;
-    margin-right: 1rem;
+    width: 150px;
+    margin-top : 0.5em;
     align-items: center;
+    display: flex;
+    margin-right: 1.5rem;
+   
+}
+.img {
+  width :3.3rem;
+  height : 3.3rem;
+  border : solid 1px white;
+  border-radius: 50%;
+}
+
+.name {
+ 
+  display: inline;
+  margin-left : 1em;
+  max-width: 4em;        
+  white-space: nowrap;    
+  overflow: hidden;       
+  text-overflow: ellipsis; 
+
 }

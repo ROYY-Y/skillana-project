@@ -11,7 +11,7 @@ export function LandingPageNavbar() {
         <ul className={styles.menu}>
             <li><Link href="#">Features</Link></li>
             <li><Link href="#">Badges</Link></li>
-            <li><Link href="#">How it Works</Link></li>
+            <li><Link href="#">How It Works</Link></li>
             <li><Link href="#">About Us</Link></li>
         </ul>
 
@@ -24,6 +24,24 @@ export function LandingPageNavbar() {
 
     </nav>
   );
+};
+
+export function Hero_section() {
+    return (
+        <div className={styles.hero}>
+                <h1 className={styles.mainText}>
+                    Explore skills. Earn badges. Show your mastery.
+                </h1>
+            
+            <div className={styles.subText}>
+                Browse interesting skills, pass a quick test, and get a verified badge to prove your expertise.
+            </div>
+
+            <button className={styles.btn}>
+                <a href='/create-account'>Start now →</a>
+            </button>
+        </div>
+    );
 };
 
 export function SkillSection() {
@@ -40,6 +58,24 @@ export function SkillSection() {
             <div className={styles.show}>
 
             </div>  {/*ไว้ใส่อนิเม*/}
+        </div>
+    );
+};
+
+export function CloseSection() {
+    return (
+        <div className={styles.closeSection}>
+            <h2 className={styles.mainText}>
+                Ready to Level Up Your Profile?
+            </h2>
+
+            <div className={styles.subText}>
+                Ready to build your profile? Join SkillANA and start showcasing your skills today.
+            </div>
+            
+            <Link href='' className={styles.btn}>
+                Get Started for Free →
+            </Link>  {/*ไว้ใส่อนิเม*/}
         </div>
     );
 };

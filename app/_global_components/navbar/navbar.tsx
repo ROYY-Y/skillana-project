@@ -46,12 +46,12 @@ export function Navbar() {
 
         <ul className={styles.proflie}>
              <div id="profile-img-wrapper" className={styles.imgWrapper}>
-                <Link href="/profile" className={styles.rightSide}>
+                <Link href="/profile" >
                    <img src={img || " "} 
                    alt = "profile navbar"
                     className={styles.img}
                    />
-                          
+            
                 </Link>
                
             </div>

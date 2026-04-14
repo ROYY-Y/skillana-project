@@ -1,12 +1,11 @@
-
+"use client"
 import style from "./verify.module.css"
 import LeftBox from "../_global_components/authen_pages/left_box"
 import OtpForm from "./_components/otp_form"
 
 
 export default function Login(){
-
-    const userEmail = "example1234@gmail.com"
+    const userEmail = sessionStorage.getItem("pending_email")
     return(<>
        <main className={style.mainBox}>
             

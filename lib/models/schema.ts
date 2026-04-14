@@ -42,6 +42,13 @@ export interface IUser extends Document {
   profileImg?: string;
 }
 
+export interface IPendingUser extends Document{
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
 export interface IBadgeCategory extends Document {
   name: string;
 }
@@ -68,6 +75,13 @@ export interface IBadge extends Document {
   test: {
     questions: IQuestion[];
   };
+}
+
+export interface IOtp extends Document {
+  email: string;
+  otp_code: string;
+  createdAt: Date;
+  isUsed: boolean;
 }
 
 // --- 2. Schemas ---
@@ -142,8 +156,25 @@ const UserSchema = new Schema<IUser>(
   
 );
 
+const OtpSchema: Schema = new Schema({
+  email: { type: String, required: true },
+  otp_code: { type: String, required: true },
+  isUsed: { type: Boolean, default: false },
+  // กำหนดให้ข้อมูลลบตัวเองทิ้งหลังจากสร้างมาแล้ว 300 วินาที (5 นาที)
+  createdAt: { type: Date, default: Date.now, expires: 300 } 
+});
+
+const PendingUserSchema: Schema = new Schema<IPendingUser>({
+  firstName: {type: String, required: true},
+  lastName: {type: String, required: true},
+  email: {type: String, required: true},
+  password: {type: String, required: true}
+})
+
 // --- 3. Models ---
 
 export const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
 export const Badge: Model<IBadge> = mongoose.models.Badge || mongoose.model<IBadge>('Badge', BadgeSchema);
 export const BadgeCategory: Model<IBadgeCategory> = mongoose.models.BadgeCategory || mongoose.model<IBadgeCategory>('BadgeCategory', BadgeCategorySchema);
+export const Otp: Model<IOtp> =  mongoose.models.Otp || mongoose.model<IOtp>('Otp', OtpSchema);
+export const PendingUser: Model<IPendingUser> =  mongoose.models.PendingUser || mongoose.model<IPendingUser>('PendingUser', PendingUserSchema);

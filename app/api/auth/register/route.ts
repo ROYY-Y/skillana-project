@@ -1,14 +1,20 @@
 import dbConnect from "@/lib/db";
 import { User } from "@/lib/models/schema"
+import { PendingUser } from "@/lib/models/schema";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 
 export async function POST(req : Request){ // Create Account
     try{
         await dbConnect();
-        const {firstName, lastName, email, password} = await req.json();
+        const {email} = await req.json();
+
+        const pendingUser = await PendingUser.findOne({email})
+
+        if(!pendingUser) return NextResponse.json({message : "Missing pending user!"}, {status : 400})
+        
+        const {firstName, lastName, password} = pendingUser
 
         if(!firstName || !lastName || !email || !password){
             return NextResponse.json({message : "Missing information!"}, {status : 400})
@@ -22,24 +28,23 @@ export async function POST(req : Request){ // Create Account
             );
         }
 
-        const salt= await bcrypt.genSalt(10);
-        const hashPassword = await bcrypt.hash(password,salt);
-
         const newUser = await User.create({
             firstName : firstName,
             lastName : lastName,
             email : email,
-            password : hashPassword,
+            password : password,
         });
 
+        const token = jwt.sign(
+            { id: newUser._id }, //payload
+            process.env.JWT_SECRET!, 
+            { expiresIn: '1d' });
+
+        await PendingUser.deleteOne({email})
+        
         return NextResponse.json({
         message: "Create user successfully",
-        user: {
-            id : newUser._id,
-            firstName : newUser.firstName,
-            lastName : newUser.lastName,
-            email : newUser.email
-        }
+        token: token
         }, { status: 201 });
 
 

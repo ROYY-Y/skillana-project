@@ -1,7 +1,8 @@
 import UseClientPage from "./_components/useClientPage";
 
 export default function Profile () {
-  return(<>
+  return(
+  <>
   <main>
    <UseClientPage />
   </main>

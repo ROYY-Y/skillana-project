@@ -3,7 +3,6 @@ import style from "../../profile.module.css"
 import { useEditContext } from '../edit';
 import { UploadButton } from "./upload";
 import { useState } from 'react';
-import type { UploadRouter } from "@/app/api/uploadthing/route";
 
 
 export default function ProfileImg() {

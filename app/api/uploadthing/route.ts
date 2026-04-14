@@ -1,5 +1,5 @@
 import { createUploadthing, type FileRouter } from "uploadthing/server";
-import { NextResponse, NextRequest } from "next/server";
+
 import { createRouteHandler } from "uploadthing/next";
 import { User } from "@/lib/models/schema";
 import dbConnect from "@/lib/db";
@@ -11,7 +11,7 @@ export const uploadRouter = {
     image: { maxFileSize: "4MB" },
   })
     .middleware(async ({ req }) => {
-      return { userId: "69d79d22ce57ad582bf414de" };
+      return { userId: User._id };
     })
     .onUploadComplete(async ({ metadata, file }) => {
         try {

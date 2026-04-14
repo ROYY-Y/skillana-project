@@ -47,12 +47,9 @@ export default function Footer(){
         </div>
 
             <div className={style.logo}>
-                <img src="logo.png" alt ="Logo"></img>
+                <img src="logo.png" alt ="Logo" className={style.img} ></img>
                 <p>©2026 SkillAna. All rights reserved.</p>
             </div>
-
-      
-       
             </>
         )
 }

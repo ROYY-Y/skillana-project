@@ -4,34 +4,6 @@ import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
-/*
-export async function GET(req : Request, { params }: { params: Promise<{ id: string }>} ){// Get User Information
-    try {
-        await dbConnect();
-        const { id } = await params;
-        const authHeader = req.headers.get("authorization");
-        const token = authHeader?.split(" ")[1];
-        
-        if (!token) {
-            return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-        }
-
-        const payload = jwt.verify(token, process.env.JWT_SECRET!) as {id : string};
-        
-        if (payload.id !== id) {
-            return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-        }
-       const user = await User.findById(id);
-
-       if (!user) {
-        return NextResponse.json({ error: "User not found" }, { status: 404 });
-       }
-       return NextResponse.json(user, { status: 200 });
-    } catch (error) {
-        console.error("Error fetching user:", error);
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-    }
-} */
 
 export async function PUT(
   req: Request,

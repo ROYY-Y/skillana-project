@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 16px; /*18px*/
+  font-size: 1rem;
   font-weight: bold;
   max-width: 100%;
-  height: 60px;
+  height: 3.75rem;
   background: linear-gradient(90deg, rgba(47, 33, 85, 1) 20%, rgba(131, 63, 194, 1) 100%);
   border-bottom: solid #7050B3 1px; /*ใส่ไว้ดูเส้นขอบก่อน*/
   position: sticky;
@@ -14,8 +14,8 @@
 }
 
 .logo {       /*กล่องโลโก้*/
-  margin: 0 0 0 30px;
-  width: 140px;
+  margin: 0 0 0 1.875rem;
+  width: 8.75rem;
 }
 
 .logo img {
@@ -25,22 +25,19 @@
 
 .menu {     /*โครงแถบเมนูหลัก*/
   display: flex;
-  align-items: center;
-  gap: 55px;
+  gap: 3.437rem;
 }
 
 .menu li {    /*ขนาดแต่ละแถบเมนู*/
-  width: 140px;
-  height: 60px;
+  width: 8.75rem;
+  height: 3.75rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
 .menu li:nth-child(1),
 .menu li:nth-child(2){   /*Home, Skills*/
-  width: 110px;
+  width: 6.875rem;
 }
 
 .menu li::after {   /*เส้นใต้เมนู*/
@@ -49,23 +46,69 @@
   bottom: 0;
   left: 50%;
   width: 0;
-  height: 6px;
+  height: 0.375rem;
   background-color: #5F28CD;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
 
-.menu li:hover::after {
+.navLink {          /*ตัวพื้นฐานแต่ละlink.navLink */
+  color: #b9b9b9;
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLink.active {    /*เมื่ออยู่หน้าที่เลือก*/
+  color: #ffffff; 
+}
+
+.menu li:has(.active)::after {    /*เมนูถ้ามี .active ด้วย*/
+  width: 100%; 
+}
+
+.menu li:hover .navLink {       /*เมื่อhover แ่ตละเมนู*/
+  color: #ffffff;
+}
+
+.menu li:hover::after {         /*เมื่อhover จะขึ้นเส้นใต้*/
   width: 100%;
 }
 
+.menu:hover li:has(.active) .navLink {    /*เมื่อ hover แถบเมนู ตัว.active จะเป็นเหมือนเดิม*/
+  color: #b9b9b9;
+}
+
+.menu:hover li:has(.active)::after {      /*เส้นใต้*/
+  width: 0;
+}
+
+.menu li:has(.active):hover::after {      /*เมื่อ hover ทับตัว .active อีก*/
+  width: 100%;
+}
+
+.menu li:has(.active):hover .navLink {
+  color: #ffffff;
+}
+
 .proflie {
+<<<<<<< HEAD
     background-color: transparent;
     position: relative;
     display: flex;
     width: 150px;
     margin-top : 0.5em;
+=======
+    background-color: aliceblue;
+    width: 9.375rem;
+    height: 2.5rem;
+    display: flex;
+    margin-right: 1.9rem;
+>>>>>>> 54d840a2f6f6d512561355fc2f7dbe76ef6b2a75
     align-items: center;
     display: flex;
     margin-right: 1.5rem;

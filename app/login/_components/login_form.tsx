@@ -21,6 +21,8 @@ export default function Form(){
         localStorage.removeItem("token");
     }, []);
 
+    console.log( `token : ${localStorage.getItem("token")}`)
+
     async function handleSubmit(){
         setIsLoading(true);
         const email = emailRef.current?.value
@@ -43,12 +45,27 @@ export default function Form(){
                 body: JSON.stringify({ email, password : pass}),
             })
 
-            const data = await res.json();
-
             if(res.ok){
-                localStorage.setItem("token", data.token);
-                alert("Login สำเร็จ");
-                router.push("/");
+                const data = await res.json()
+                localStorage.setItem("token",data.token)
+
+                const otpRes = await fetch("http://localhost:3000/api/auth/otp",{
+                    method : "POST",
+                    headers : {"Content-Type" : "application/json"},
+                    body : JSON.stringify({email: email})
+                })
+                
+                const otpData = await otpRes.json();
+                
+                if(!otpRes.ok){
+                    setIsLoading(false);
+                    console.error(otpData.message)
+                    return;
+                }else{
+                    sessionStorage.setItem("pending_email",email)
+                    sessionStorage.setItem("method","login")
+                    router.push("/verify");
+                }
             }
         }
         catch(error){

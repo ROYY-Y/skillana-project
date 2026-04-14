@@ -1,13 +1,25 @@
 "use client"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import OtpInput from "./otp_input"
 import style from "./otp_form.module.css"
+import { useRouter } from "next/navigation";
 export default function OtpForm(){
     
     const itemsRef = useRef<(HTMLInputElement | null)[]>([]); // รอทำงานเชื่อมกับ back-end
+    const [email, setEmail] = useState("");
+    const [method, setMethod] = useState("");
+    const router = useRouter();
     useEffect(() => {
     // สั่งให้ช่องแรก (index 0) focus
         itemsRef.current[0]?.focus();
+        const savedEmail = sessionStorage.getItem("pending_email");
+        const savedMethod = sessionStorage.getItem("method");
+        if(savedEmail && savedMethod){
+            setEmail(savedEmail);
+            setMethod(savedMethod)
+        }else{
+            router.replace('/login')
+        }
     }, []);
     const handleFocusNext = (index: number) => {
         if (index < 5) {
@@ -23,11 +35,50 @@ export default function OtpForm(){
     }
     };
 
-    const handleSubmit = ()=>{
+    const handleSubmit = async ()=>{
+        const otpString = itemsRef.current
+        .map((input) => input?.value || "") // ดึง value ออกมา ถ้าไม่มีให้เป็นค่าว่าง
+        .join("");
 
+        if (otpString.length != 6) {
+            alert("Please enter all 6 digits");
+            return;
+        }
+
+        const res = await fetch("http://localhost:3000/api/auth/otp/verify",{
+            method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({email: email, otp_code : otpString})
+        })
+        const data = await res.json();
+        if(!res.ok){
+            console.error(data.message)
+            return;
+        }else{
+            if(method == "register"){
+                const regis_res = await fetch("http://localhost:3000/api/auth/register",{
+                    method: "POST",
+                    headers: {"Content-Type" : "application/json"},
+                    body: JSON.stringify({email: email})
+                })
+                const regis_data = await regis_res.json()
+                if(!regis_res.ok){
+                    console.error(regis_data.message)
+                    return;
+                }else{
+                    const token = regis_data.token;
+                    localStorage.setItem("token",token)
+                    router.push("/home");
+                }
+            }else if(method == "login"){
+                const token = localStorage.getItem("token")
+                if(!token) router.replace("/login")
+                else router.push("/home")
+            }
+        }
     }
 
-    const verify = ()=>{
+    const resend = ()=>{
 
     }
     return (<>
@@ -53,7 +104,7 @@ export default function OtpForm(){
             ))}
         </section>
         <p style={{fontSize : "small"}}>Don’t received the verification codes? &nbsp;
-        <button className= {style.resendBtn} onClick={verify}>Resend</button>
+        <button className= {style.resendBtn} onClick={resend}>Resend</button>
         </p>
 
         <button className= {style.verify} onClick={handleSubmit}>Verify</button>

@@ -9,5 +9,3 @@ const payload = {
 const token = jwt.sign(payload,  JWT_SECRET, { expiresIn : "10h" });
 
 console.log("Generated Token:", token);
-
-localStorage.setItem("token", token)

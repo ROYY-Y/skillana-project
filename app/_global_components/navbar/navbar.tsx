@@ -1,4 +1,5 @@
 'use client'
+import { usePathname } from 'next/navigation';
 import styles from './navbar.module.css';
 import Link from 'next/link';
 import { jwtDecode } from 'jwt-decode';
@@ -8,7 +9,14 @@ import { useEffect, useState } from 'react';
 export function Navbar() {
   const [img, setImg] = useState<string | null>(null);
   const [name, setName] = useState<string | null>(null)
-  
+  const pathname = usePathname();       //ดึง URL มาเก็บ
+
+  const navLinks = [                    //หน้าเมนูทั้งหมด
+    { name: 'Home', href: '/home' },
+    { name: 'Skills', href: '/skills' },
+    { name: 'Collection', href: '/collection' },
+    { name: 'My Resume', href: '/my-resume' },
+  ];
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -30,6 +38,9 @@ export function Navbar() {
     fetchUser();
   }, []);
   
+
+  
+
   return (
     
     <nav className={styles.navbar}>
@@ -38,10 +49,20 @@ export function Navbar() {
         </Link>
 
         <ul className={styles.menu}>
-            <li><Link href="/home">Home</Link></li>
-            <li><Link href="/">Skills</Link></li>
-            <li><Link href="/">My Badges</Link></li>
-            <li><Link href="/">My Resume</Link></li>
+          {navLinks.map((link) => {           //เปลี่ยน navLink มาแทก li
+            const isActive = pathname.startsWith(link.href);    //เช็คURLเริ่มด้วยhrefที่ตรรงกัน
+
+            return (
+              <li key={link.href}>
+                <Link 
+                  href={link.href}
+                  className={`${styles.navLink} ${isActive ? styles.active : ''}`}    //เพิ่ม .activeตัวที่ทำงาน
+                >
+                  {link.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <ul className={styles.proflie}>
@@ -60,4 +81,4 @@ export function Navbar() {
 
     </nav>
   );
-};
+    }

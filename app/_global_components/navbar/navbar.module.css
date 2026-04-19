@@ -96,19 +96,11 @@
 }
 
 .proflie {
-<<<<<<< HEAD
-    background-color: transparent;
-    position: relative;
-    display: flex;
-    width: 150px;
-    margin-top : 0.5em;
-=======
     background-color: aliceblue;
     width: 9.375rem;
     height: 2.5rem;
     display: flex;
     margin-right: 1.9rem;
->>>>>>> 54d840a2f6f6d512561355fc2f7dbe76ef6b2a75
     align-items: center;
     display: flex;
     margin-right: 1.5rem;

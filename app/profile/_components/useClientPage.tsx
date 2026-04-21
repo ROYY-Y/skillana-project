@@ -8,7 +8,7 @@ import ProfileImg from "./profileImg/profile-img";
 import Popup from "./popup/popup";
 import { EditProvider, useEditContext, ProfileData } from "./edit";
 import style from "../profile.module.css";
-import Navbar from "../../_global_components/authen_pages/login_nav";
+import { Navbar } from "@/app/_global_components/navbar/navbar";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 

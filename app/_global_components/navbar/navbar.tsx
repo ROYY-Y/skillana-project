@@ -68,7 +68,7 @@ export function Navbar() {
         <ul className={styles.proflie}>
              <div id="profile-img-wrapper" className={styles.imgWrapper}>
                 <Link href="/profile" >
-                   <img src={img || " "} 
+                   <img src={img || "user.png"} 
                    alt = "profile navbar"
                     className={styles.img}
                    />
@@ -78,7 +78,11 @@ export function Navbar() {
             </div>
              <span className={styles.name} title={name || ""}>{name}</span>
         </ul>
-
+          <footer>
+            <footer>
+              
+            </footer>
+          </footer>
     </nav>
   );
     }

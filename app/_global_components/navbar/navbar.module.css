@@ -99,16 +99,16 @@
     background-color: transparent;
     position: relative;
     display: flex;
-
+  justify-content: flex-end;
     margin-top : 0.1em;
     background-color: transparent;
     width: 9.375rem;
     height: 2.5rem;
     display: flex;
-    margin-right: 1.9rem;
+   
     align-items: center;
     display: flex;
-    margin-right: 1.5rem;
+  
    
 }
 .imgWrapper {

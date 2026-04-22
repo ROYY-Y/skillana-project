@@ -21,8 +21,6 @@ export default function Form(){
         localStorage.removeItem("token");
     }, []);
 
-    console.log( `token : ${localStorage.getItem("token")}`)
-
     async function handleSubmit(){
         setIsLoading(true);
         const email = emailRef.current?.value

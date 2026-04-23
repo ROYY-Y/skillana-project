@@ -1,4 +1,6 @@
+"use client"
 import style from "./main.module.css"
+import { useState, useEffect } from "react";
 
 export default function BadgePage() {
   const badgeTitle = "Title";
@@ -6,21 +8,34 @@ export default function BadgePage() {
   const nQuestion = "10";
   const tLimit = "15";
   const pScore = "8";
+  const imgUrl = "/badges/devops_badge/docker.png"
+  
+  const [isOwn, setIsown] = useState(false)
+  
+
+  const handleClick = ()=>{
+
+    if(isOwn) return;
+
+  }
+  
   return (
     <section className={style.frame}>
         <div className ={style.mainBox}>
             
             <section className={style.boxLeft}>
-                <div className = {style.imgContainer}></div>
+                <div className = {style.imgContainer}>
+                    <img className={style.imgFrame} src={imgUrl}></img>
+                </div>
             </section>
 
             <section className={style.boxRight}>
                 
                 <div className = {style.titleSection}>
                     <h1 style={{fontSize: "x-large"}}>{badgeTitle}</h1>
-                    <div className = {style.own}>
-                        <div className= {style.circle}></div>
-                        <p>Own</p>
+                    <div className = {isOwn ? style.ownBar : style.notOwnBar}>
+                        <div className= {isOwn ? style.circleOwn : style.circleNotOwn}></div>
+                        <p>{isOwn ? "Own":"Not own"}</p>
                     </div>
                 </div>
 
@@ -38,8 +53,8 @@ export default function BadgePage() {
                     <p style={{fontSize: "smaller"}}>Passing Score: {pScore} or more correct answers to earn the badge</p>
                 </div>
 
-                <div className={style.btn}>
-                    Already Claimed
+                <div className={isOwn ? style.btnAlready : style.btnClaim} onClick={handleClick}>
+                    {isOwn ? "Already claimed" : "Claim"}
                 </div>
             </section>
         

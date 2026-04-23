@@ -14,7 +14,7 @@ export function Navbar() {
   const navLinks = [                    //หน้าเมนูทั้งหมด
     { name: 'Home', href: '/home' },
     { name: 'Skills', href: '/skills' },
-    { name: 'Collection', href: '/collection' },
+    { name: 'Collection', href: '/collections' },
     { name: 'My Resume', href: '/my-resume' },
   ];
   useEffect(() => {

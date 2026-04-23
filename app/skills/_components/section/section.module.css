@@ -1,4 +1,32 @@
-.img {
-    width: 2.5rem;
-    height: 2.5rem;
+
+.badgeName{
+    
+    font-size : 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 0.15fr);
+    justify-content: center;
+}
+.badge {
+    margin : 1rem 0 1rem 0 ;
+    cursor: pointer;
+    text-align: center;
+    display : flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.badge img {
+   width: 6.5rem;
+   height: 6.5rem;
+   object-fit: contain;
+}
+.container {
+    background-color: #4D256E;
+   
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    padding : 1.5rem;
+    width : 100%;
 }

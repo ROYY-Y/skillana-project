@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    flex-direction: row;   /* ← row, not column */
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.aside {
+    flex-shrink: 0;        /* sidebar keeps fixed width, never squishes */
+}
+.section {
+    flex: 1;        /* takes all remaining space to the right of sidebar */
+    padding: 2rem;
+    height: 60rem;
+    overflow-y: scroll;
+        scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE / Edge */
+}
+
+.section::-webkit-scrollbar {
+    display: none;                  /* Chrome / Safari */
+
+}

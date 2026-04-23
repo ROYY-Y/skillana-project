@@ -51,8 +51,7 @@ export default function Main({ mode = "all" }: { mode?: "all" | "collections" })
 
 
             setUser(userInfo);
-            console.log("USER RAW:", userData);
-            console.log("BADGE DATA:", badgeData);
+        
             setBadges(badgeInfo);
 
             const uniqueCategories = Array.from(
@@ -79,22 +78,8 @@ export default function Main({ mode = "all" }: { mode?: "all" | "collections" })
     fetchData();
 }, []);
 
-const filteredBadges = useMemo(() => {
-    if (mode === "collections" && user) {
-        const badgeSet = new Set(
-            user.badges.map(b => b.badgeId)
-        );
+const filteredBadges = badges;
 
-        return badges.filter(b => badgeSet.has(b._id));
-    }
-
-    return badges;
-}, [mode, badges, user]);
-console.log("MODE:", mode);
-console.log("FILTERED BADGES:", filteredBadges.length);
-console.log("ALL BADGES:", badges.length);
-console.log("USER BADGES:", user?.badges.length);
-console.log("USER BADGES SAMPLE:", user?.badges.slice(0, 5));
 
     if (loading) return <div>Loading...</div>;
     return (
@@ -116,7 +101,8 @@ console.log("USER BADGES SAMPLE:", user?.badges.slice(0, 5));
                         category={category}
                         categories={categories}
                         badges={filteredBadges}
-                        user={user}         
+                        user={user}  
+                        mode={mode}       
                     />
                 </section>
             </main>

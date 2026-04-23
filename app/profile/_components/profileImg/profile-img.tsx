@@ -9,7 +9,15 @@ export default function ProfileImg() {
 
     const {isEdit, updateTempField, tempData} = useEditContext();
     const [isUploading, setIsUploading] = useState(false);
+    const [errors, setErrors] = useState({ firstName: false, lastName: false });
     
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>, field: "firstName" | "lastName") => {
+    const val = e.target.value;
+    updateTempField(field, val);
+    setErrors(prev => ({ ...prev, [field]: val.trim() === "" }));
+    };
+
+
     return (
         <>
         
@@ -59,27 +67,31 @@ export default function ProfileImg() {
         </>
     ) : (
         <>
-            <input
-                className={imgstyle.inputName}
-                value={tempData.firstName|| ""}
-                onChange={(e) => {  
-                    const last = tempData.firstName || "";
-                    updateTempField("firstName", e.target.value );
-                }}
-            />
+           <div className={imgstyle.nameWrapper}>
+                <div className={imgstyle.inputGroup}>
+                    <input
+                        className={`${imgstyle.inputName} ${errors.firstName ? imgstyle.inputError : ""}`}
+                        value={tempData.firstName || ""}
+                        onChange={(e) => handleNameChange(e, "firstName")}
+                        onBlur={() => setErrors(prev => ({ ...prev, firstName: !tempData.firstName?.trim() }))}
+                    />
+                    {errors.firstName && <p className={imgstyle.errorText}>Please enter your first name</p>}
+                </div>
 
-            <input
-                className={imgstyle.inputName}
-                value={tempData.lastName || ""}
-                onChange={(e) => {
-                    const first = tempData.lastName || "";
-                    updateTempField("lastName", e.target.value);
-                }}
-            />
-        </>
-    )}
-</div>
+                <div className={imgstyle.inputGroup}>
+                    <input
+                        className={`${imgstyle.inputName} ${errors.lastName ? imgstyle.inputError : ""}`}
+                        value={tempData.lastName || ""}
+                        onChange={(e) => handleNameChange(e, "lastName")}
+                        onBlur={() => setErrors(prev => ({ ...prev, lastName: !tempData.lastName?.trim() }))}
+                    />
+                    {errors.lastName && <p className={imgstyle.errorText}>Please enter your last name</p>}
+                </div>
             </div>
+                    </>
+                )}
+            </div>
+                        </div>
         </>
     )
 }

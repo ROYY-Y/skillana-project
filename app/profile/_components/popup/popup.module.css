@@ -46,3 +46,7 @@
     display: inline-flex;
     gap: 10px;
 }
+.saveDisabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

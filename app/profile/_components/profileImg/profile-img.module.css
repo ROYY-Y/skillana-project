@@ -100,11 +100,26 @@
    margin-left : 20px;
   
 }
-
+.inputGroup {
+    display: flex;
+    flex-direction: column; /* stacks input + error text vertically */
+      min-height: 70px;
+}
 .editIcon {
     position: absolute;
     right: 30px;
     cursor: pointer;
     width: 40px;
     height: auto;
+}
+.inputError {
+    border: 2px solid #ef4444 !important;
+    outline: none;
+}
+
+.errorText {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 2.5rem;
 }

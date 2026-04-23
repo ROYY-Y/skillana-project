@@ -155,7 +155,7 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
     try {
         const token = localStorage.getItem("token");
         
-        // 1. Get the ID from the token so we know which user to update
+        
         const decoded = jwtDecode(token!) as { id: string };
         const userId = decoded.id;
 

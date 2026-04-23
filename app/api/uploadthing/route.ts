@@ -18,7 +18,6 @@ export const uploadRouter = {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string };
 
     console.log("Decoded ID:", decoded.id);
-
     return { userId: decoded.id };
 
   } catch (err) {

@@ -29,10 +29,9 @@ export interface User {
 
 type Prop = {
     category: string;
-    categories: Category[];
     badges: BadgeData[];
     user: User | null;
-    mode: "all" | "collections"; // ✅ important
+    mode: "all" | "collections"; 
 }
 
 type BadgeOwned = BadgeData & { owned: boolean }
@@ -54,7 +53,7 @@ export const categoryOrderMap: Record<string, number> = {
     "Cloud & DevOps": 5
 };
 
-export default function Section({ category, categories, badges, user, mode }: Prop) {
+export default function Section({ category, badges, user, mode }: Prop) {
 
 
     const group = useMemo(() => {

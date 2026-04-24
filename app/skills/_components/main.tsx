@@ -99,7 +99,6 @@ const filteredBadges = badges;
                 <section className={style.section}>
                     <Section
                         category={category}
-                        categories={categories}
                         badges={filteredBadges}
                         user={user}  
                         mode={mode}       

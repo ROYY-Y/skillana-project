@@ -1,0 +1,27 @@
+.containner {
+    display: flex;
+    justify-content: space-between;
+    width: 96%;
+    height: 43.75rem;
+    margin: 0 auto; 
+}
+
+.text {
+    margin: 8rem 14%;
+    height: 12.5rem;
+}
+
+.text h1 {
+    width: 25rem;
+    margin-bottom: 1.25rem;
+}
+
+.text div {
+    width: 25rem;
+    font-size: 1.12rem;
+}
+
+.show {
+    margin: 5.5rem 27rem 0 0;
+
+}

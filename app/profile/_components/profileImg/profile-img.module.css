@@ -35,7 +35,7 @@
 .uploadBtn input {
     display: none;
 }
-/* Overlay (Upload button container) */
+
 .uploadBtn {
     position: absolute;
     top: 0;
@@ -60,7 +60,7 @@
     height: 100%;
     margin-left : 3.125rem;
 }
-/* icon inside */
+
 .overlay {
     width: 5.625rem;
     height: 5.625rem;

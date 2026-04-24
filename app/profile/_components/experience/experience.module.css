@@ -23,7 +23,7 @@
     font-size: 24px;
     font-weight: bold;
 }
-.dateContent{  /*Input Field Styles*/
+.dateContent{  
     margin-bottom : 0.125rem;
     color : white;
     font-size : 16px;
@@ -90,7 +90,7 @@
   font-size: 32px !important;
   font-weight: 800 !important;
 }
-/* 1. Make the hit-area (the button) much larger */
+
 :global(.react-datepicker__navigation) {
   width: 3.75rem !important;
   height: 3.75rem !important;
@@ -98,13 +98,13 @@
   overflow: visible !important;
 }
 
-/* 2. Style the base icon container */
+
 :global(.react-datepicker__navigation-icon) {
   font-size: 20px !important;
   overflow: visible !important;
 }
 
-/* 3. The Actual Arrow (The Pseudo-element) */
+
 :global(.react-datepicker__navigation-icon::before) {
   content: '' !important;
   display: block !important;
@@ -118,7 +118,7 @@
   left: 50% !important;
 }
 
-/* 4. Directional Rotation (CRITICAL - makes it look like an arrow) */
+
 :global(.react-datepicker__navigation-icon--previous::before) {
   transform: translate(-50%, -50%) rotate(-135deg) !important;
 }
@@ -133,7 +133,7 @@
   align-items: center !important;
 }
 
-/* 2. Style the actual "X" button circle */
+
 :global(.react-datepicker__close-icon::after) {
   background-color: #ff4d4f !important;
   font-size: 32px !important;
@@ -146,7 +146,7 @@
   cursor: pointer;
 }
 
-/* 3. Hover effect */
+
 :global(.react-datepicker__close-icon:hover::after) {
   background-color: #d9363e !important;
   transform: scale(1.1);

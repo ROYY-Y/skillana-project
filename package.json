@@ -14,13 +14,14 @@
     "jwt-decode": "^4.0.0",
     "mongoose": "^9.4.1",
     "next": "16.2.1",
+    "next-swagger-doc": "^0.4.1",
     "nodemailer": "^8.0.5",
     "react": "19.2.4",
     "react-datepicker": "^9.1.0",
     "react-dom": "19.2.4",
     "resend": "^6.10.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-react": "^5.32.1",
+    "swagger-ui-react": "^5.32.4",
     "uploadthing": "^7.7.4",
     "yaml": "^2.8.3"
   },
@@ -31,6 +32,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-react": "^5.18.0",
     "babel-plugin-react-compiler": "1.0.0",
     "typescript": "^5"
   }

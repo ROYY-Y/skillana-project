@@ -1,7 +1,7 @@
 'use client'
 
 import style from './section.module.css'
-import { useState, useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 export interface Category {
     categoryId: string;

@@ -1,8 +1,9 @@
 import MainBox from "./_components/main"
 
-export default function TestMain(){
-    
+export default async function TestMain({params} : {params : Promise<{ id : string}>}){
+    const data = await params;
+    const id = data.id;
     return (<>
-        <MainBox></MainBox>
+        <MainBox id={id}></MainBox>
     </>)
 }

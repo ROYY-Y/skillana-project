@@ -44,6 +44,7 @@ export function Template(){
     const checkDataComplete = (userData: any) => {
         if (!userData) return false;
         const hasNames = userData.firstName?.trim() && userData.lastName?.trim();
+        const hasAboutMe = userData.aboutMe?.trim() !== "" && userData.aboutMe !== undefined;
         const hasContact = userData.contact && 
                            userData.contact.phoneNumber?.trim()!== "" &&
                            userData.contact.address?.trim()!== "";
@@ -52,7 +53,7 @@ export function Template(){
                              userData.education.university?.trim() !== "" &&
                              userData.education.major?.trim() !== "";
         const hasExperience = Array.isArray(userData.experience) && userData.experience.length > 0;
-        return hasNames && hasContact && hasEducation && hasExperience;
+        return hasNames && hasAboutMe && hasContact && hasEducation && hasExperience;
     };
 
     const handleSelectTemplate = () => {
@@ -76,7 +77,7 @@ export function Template(){
 
     return(
         <div className={styles.container}>
-            {templates.map((src, index) => (
+            {templates.map((src: any, index) => (
                 <div 
                     key={index} 
                     className={styles.itemWrapper} 

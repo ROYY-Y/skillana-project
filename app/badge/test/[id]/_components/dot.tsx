@@ -4,10 +4,12 @@ import styles from "./dot.module.css"
 interface InputProps{
     focus : boolean,
     done : boolean
+    onClick : ()=> void;
 }
 
-export default function Dot({focus, done} : InputProps){
+export default function Dot({focus, done, onClick} : InputProps){
     return (
-        <div className= {`${styles.dot} ${focus ? styles.dotFocus : " "} ${done ? styles.done : ""}`}></div>
+        <div onClick={onClick}
+        className= {`${styles.dot} ${focus ? styles.dotFocus : " "} ${done ? styles.done : ""}`}></div>
     )
 }

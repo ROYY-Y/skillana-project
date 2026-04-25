@@ -55,6 +55,19 @@
     margin-right: 1em;
 }
 
+.btnCnt{
+    text-decoration: none;
+    background-color: #4C10C5;
+    padding: .5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-size: small;
+    border-radius: 10px;
+    opacity: 40%;
+    transition: all .2s;
+}
+
 .btnNext{
     cursor: pointer;
     text-decoration: none;

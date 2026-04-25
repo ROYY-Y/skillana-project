@@ -79,7 +79,9 @@ export default function BadgePage({id} : InputProps) {
 
     const handleClick = ()=>{
 
-        if(isOwn) return;
+        if(isOwn || !id) return;
+
+        router.push(`/badge/test/${id}`);
 
     }
     
@@ -107,7 +109,7 @@ export default function BadgePage({id} : InputProps) {
                         <p style={{fontSize: "smaller"}}>{badgeDescription}</p>
                     </div>
 
-                    <hr style={{color: "white", width : "90", borderTop: "1px solid"}}></hr>
+                    <hr style={{color: "white", width : "85%", borderTop: "1px solid"}}></hr>
                     
                     <p style={{fontSize: "smaller", fontWeight : "bold"}}>To earn the badge, you must pass the test based on the following criteria :</p>
                     

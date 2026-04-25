@@ -1,11 +1,10 @@
-
 .profileBox{
     display : block;
-    margin-top: 10px;
-    width : 625px;
-    height: 360px;
+    margin-top: 0.625rem;
+    width : 39.0625rem;
+    height: 22.5rem;
     background-color: #552597;
-    border-radius: 16px;
+    border-radius: 1rem;
     border: 1px solid #ffffff99;
 }
 .profileSection{
@@ -13,19 +12,19 @@
     font-size : 18px;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
-    margin-top : 20px;
-    margin-left : 20px;
+    margin-top : 1.25rem;
+    margin-left : 1.25rem;
 }
-.profileContent{  /*Input Field Styles*/
-    margin-bottom : 2px;
+.profileContent{  
+    margin-bottom : 0.125rem;
     color : white;
     font-size : 16px;
-    padding-left : 20px;
-    padding-right : 20px;
+    padding-left : 1.25rem;
+    padding-right : 1.25rem;
     background-color: #3A1C63;
-    width: 552px;
-    height: 50px;
-    border-radius: 10px;
+    width: 34.5rem;
+    height: 3.125rem;
+    border-radius: 0.625rem;
     border : 0px ;
 }
 
@@ -44,34 +43,33 @@
 
 .editIcon{
     position: absolute;
-    right: 70px;
+    right: 4.375rem;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    width: 24px;
+    width: 1.5rem;
     height: auto;
 }
 
 .divider {
-    margin-top : 40px;
-    margin-bottom : 20px;
-    width: 1281px;
-    
+    margin-top : 2.5rem;
+    margin-bottom : 1.25rem;
+    width: 100%;
     background-color: white;
     height: 1px;
 }
 .logout {
-    margin-top : 20px;
-    width: 200px;
-    height: 60px;
+    margin-top : 1.25rem;
+    width: 12.5rem;
+    height: 3.75rem;
     font-size : 24px;
     font-weight: bold;
     background-color: red;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     cursor: pointer;
-    margin-bottom : 60px;
+    margin-bottom : 3.75rem;
 }
 .logout:active{
     transform: scale(0.9);
@@ -100,7 +98,7 @@
     background-color: rgb(54, 136, 54);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     cursor: pointer;
 }
 .editButton:hover {
@@ -112,39 +110,28 @@
 /*------------------------END Save and Reset Buttons------------------------------*/
 
 
-
-
-
-
-
-
-
-
 /*------------------------Set Layout in Profile Pages------------------------------*/
 .mainContainer{
     display : flex;
     flex-direction : column;
     align-items : center;
-    gap : 20px;
-    margin-top : 20px;
-    
+    gap : 1.25rem;
+    margin-top : 1.25rem;
 }
 .profileHeader {
-   display: flex;             /* Changed from inline-flex */
-    align-items: center;       /* Vertically centers image and button */
-    justify-content: center; /* Pushes image to left, button to right */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    gap : 570px;
-    
-    padding: 20px 30px;           /* Adds space on sides instead of margin-left */
-    box-sizing: border-box;    /* Ensures padding doesn't break width */
+    gap : 35.625rem;
+    padding: 1.25rem 1.875rem;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 .generalInfo{
     display : grid;
     grid-template-columns: repeat(2, 1fr);
-    gap : 20px;
-    
+    gap : 1.25rem;
     margin-left : 0px;
 }
 /*------------------------END Set Layout in Profile Pages------------------------------*/

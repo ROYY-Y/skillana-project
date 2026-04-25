@@ -1,8 +1,8 @@
 'use client'
 
 import style from './section.module.css'
-import { useState, useEffect, useMemo } from 'react'
-
+import { useMemo } from 'react'
+import Image from 'next/image'
 export interface Category {
     categoryId: string;
     name: string;
@@ -89,7 +89,7 @@ export default function Section({ category, badges, user, mode }: Prop) {
 
 }, [badges, user]);
 
-    if (!user) return <div>Loading...</div>;
+    //if (!user) return <div>Loading...</div>;
 
     if (badges.length === 0 && Object.keys(group).length === 0) {
         return <div>No badges found.</div>;
@@ -134,9 +134,11 @@ export default function Section({ category, badges, user, mode }: Prop) {
                                                 className={`${style.badge} ${b.owned ? style.owned : ''}`}
                                             >
                                                 <div className={style.imageWrapper}>
-                                                    <img
-                                                        src={b.imgUrl}
+                                                    <Image
+                                                        src={`/${b.imgUrl}`}
                                                         alt={b.badgeName}
+                                                        width={100}
+                                                        height={100}
                                                         className={b.owned ? style.faded : ''}
                                                     />
 

@@ -53,9 +53,9 @@ const editContext = createContext<EditContextType>({} as EditContextType);
 export const EditProvider = ({ children, initialData }: { children: ReactNode, initialData: ProfileData }) => {
     const [isEdit, setIsEdit] = useState(false);
 
-    // ✅ Ensure at least 1 experience always exists
+    
     const ensureDefaultExp = (data: ProfileData): ProfileData => {
-    // ✅ remove completely empty experiences
+    
     const cleaned = (data.experience || []).filter(exp =>
         exp.title?.trim() ||
         exp.startDate ||
@@ -63,7 +63,7 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
         exp.description?.trim()
     );
 
-    // ✅ if nothing valid → create ONE default
+    
     if (cleaned.length === 0) {
         return {
             ...data,
@@ -159,21 +159,21 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
         const decoded = jwtDecode(token!) as { id: string };
         const userId = decoded.id;
 
-        // 2. Send the PUT/POST request to your backend
+        
         const res = await fetch(`/api/users/${userId}`, {
-            method: "PUT", // Or PUT, depending on your backend route
+            method: "PUT", 
             headers: { 
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}` 
             },
-            body: JSON.stringify(tempData) // This sends the entire profile object
+            body: JSON.stringify(tempData) 
         });
         
         if (res.ok) {
             const updatedData = await res.json();
             console.log("Database updated successfully!");
             
-            // 3. IMPORTANT: Update the 'liveData' so the UI shows the new info
+            
             setLiveData(tempData);
             setIsEdit(false);
         } else {
@@ -192,7 +192,7 @@ export const EditProvider = ({ children, initialData }: { children: ReactNode, i
     return (
         <editContext.Provider value={{ 
             isEdit, 
-            setEditing: setIsEdit, // Map state setter to the name used in Context
+            setEditing: setIsEdit, 
             liveData, 
             tempData, 
             updateTempField, 

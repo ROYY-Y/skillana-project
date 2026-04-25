@@ -4,6 +4,6 @@ export default async function BadgeInfo({params} : {params : Promise<{ id : stri
     const data = await params;
     const id = data.id;
     return(<>
-        <BadgePage></BadgePage>
+        <BadgePage id = {id}></BadgePage>
     </>)
 }

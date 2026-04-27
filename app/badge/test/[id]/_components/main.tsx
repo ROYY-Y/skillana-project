@@ -70,6 +70,12 @@ export default function MainBox({id} : InputProps){
             setPassingScore(data.badge.criteria.passingScore)
         };
         fetchData();
+
+        localStorage.removeItem("score")
+        localStorage.removeItem("total")
+        localStorage.removeItem("timeRemaining")
+        localStorage.removeItem("pass")
+        localStorage.removeItem("imgUrl")
     },[]);
     
     
@@ -146,7 +152,7 @@ export default function MainBox({id} : InputProps){
         
         localStorage.setItem("score",score.toString())
         localStorage.setItem("total",questions.length.toString())
-        localStorage.setitem("timeRemaining",formatTime(timeLeft))
+        localStorage.setItem("timeRemaining",formatTime(timeLeft))
         localStorage.setItem("pass",pass)
         localStorage.setItem("imgUrl", badge.imgUrl)
         router.push("/badge/test/result")

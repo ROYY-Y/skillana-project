@@ -62,7 +62,7 @@ export default function UseClientPage() {
   if (!data) {
     return (
       <div className={style.loadingWrapper}>
-        <h1>Loading Profile...</h1>
+       
       </div>
     );
   }

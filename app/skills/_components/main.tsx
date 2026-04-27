@@ -81,7 +81,7 @@ export default function Main({ mode = "all" }: { mode?: "all" | "collections" })
 const filteredBadges = badges;
 
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div>  </div>;
     return (
         <>
             <nav>

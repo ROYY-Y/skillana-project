@@ -14,7 +14,7 @@
 }
 
 .logo {       
-  margin: 0 0 0 1.875rem;
+  margin: 0 12.875rem 0 1.875rem;
   width: 8.75rem;
 }
 
@@ -44,13 +44,13 @@
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 80%;
   width: 0;
   height: 0.375rem;
   background-color: #5F28CD;
   border-radius: 0.625rem;
   transition: all 0.3s ease;
-  transform: translateX(-50%);
+  transform: translateX(-80%);
 }
 
 .navLink {          
@@ -133,7 +133,7 @@
  
   display: inline;
   margin-left : 1em;
-  max-width: 4em;        
+  max-width: 10em;        
   white-space: nowrap;    
   overflow: hidden;       
   text-overflow: ellipsis; 

@@ -3,6 +3,7 @@
 import style from './section.module.css'
 import { useMemo } from 'react'
 import Image from 'next/image'
+import Link from "next/link";
 export interface Category {
     categoryId: string;
     name: string;
@@ -99,7 +100,7 @@ export default function Section({ category, badges, user, mode }: Prop) {
         if (category === 'all') return true;
         return id === category;
     });
-
+   
     return (
         <>
             {filteredGroup
@@ -134,6 +135,7 @@ export default function Section({ category, badges, user, mode }: Prop) {
                                                 className={`${style.badge} ${b.owned ? style.owned : ''}`}
                                             >
                                                 <div className={style.imageWrapper}>
+                                                    <Link href ={`/badge/${b._id}`}>
                                                     <Image
                                                         src={`/${b.imgUrl}`}
                                                         alt={b.badgeName}
@@ -141,7 +143,7 @@ export default function Section({ category, badges, user, mode }: Prop) {
                                                         height={100}
                                                         className={b.owned ? style.faded : ''}
                                                     />
-
+                                                    
                                                     {b.owned && (
                                                         <img
                                                             src="/check.png"
@@ -149,6 +151,7 @@ export default function Section({ category, badges, user, mode }: Prop) {
                                                             className={style.check}
                                                         />
                                                     )}
+                                                    </Link>
                                                 </div>
 
                                                 <h3 className={style.badgeName}>

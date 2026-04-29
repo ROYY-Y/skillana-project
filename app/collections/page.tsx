@@ -2,9 +2,7 @@
 import Main from "../skills/_components/main";
 
 export default function Collections(){
-    return (
-       
+    return ( 
             <Main mode="collections" />
-        
     )
 }

@@ -1,0 +1,139 @@
+.AddSkillBox{
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+    width: 100%;
+    overflow: hidden;
+    background-color: #2f2054;
+    h3{
+        font-size: 3em;
+    }
+    p{
+        font-size: 1.5em;
+    }
+}
+
+.titleContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    hr{
+        color: #7050B3;
+    }
+}
+
+.categoryContainer{
+    width: 100%;
+}
+
+.categoryList{
+   display: flex;
+    gap: 3em;
+    width: 100%;
+    overflow-x: auto; /* ใช้ auto เพื่อให้ขึ้นเฉพาะตอนล้น */
+    padding-bottom: 20px;
+
+    -webkit-overflow-scrolling: touch; 
+
+    /* ส่วนของ Custom Scrollbar */
+    &::-webkit-scrollbar {
+        height: 8px !important; /* บังคับใช้ความสูงนี้ */
+        display: block !important; /* บังคับให้แสดง */
+    }
+    
+    &::-webkit-scrollbar-track {
+        background-color: #e0e0e0 !important;
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #7050B3 !important;
+        border-radius: 10px;
+    }
+    li{
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        padding: .2em 1.2em .2em 1.2em;
+        font-size: xx-large;
+        background-color: #efe0ff;
+        color: #300783;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all .5 ease;
+    }
+    img{
+        width: .75em;
+        height: .75em;
+    }
+    h5{
+        font-size: smaller;
+        font-weight: 600;
+    }
+}
+
+.list{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    padding: .2em 1.2em .2em 1.2em;
+    font-size: xx-large;
+    background-color: #efe0ff;
+    color: #300783;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .5 ease;
+}
+
+.currentTitle{
+    font-size: 1.5em !important;
+}
+
+.badgesDisplay{
+    /* เปลี่ยนจาก flex เป็น grid */
+    display: grid;
+    /* สั่งให้แบ่ง column ละ 120px ไปเรื่อยๆ จนเต็มความกว้าง */
+    grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+    /* บังคับให้แถวสูงแค่เท่าที่จำเป็น (ไม่ให้มันยืด) */
+    grid-auto-rows: min-content; 
+    
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    
+    /* สำคัญ: ถ้ายังห่าง ให้ลองเปลี่ยน height เป็นค่าคงที่ดูก่อน */
+    height: 450px; 
+    overflow-y: auto;
+    background-color: #3d2b6b; /* เปลี่ยนจาก lightblue ให้เข้ากับธีม Skill Ana */
+    border-radius: 15px;
+    cursor: pointer;
+}
+.badgeItem{
+    font-size: x-small;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    img{
+        width: 60%;
+        height: 70%;
+    }
+}
+.boxCheck{
+    opacity: 50%;
+}
+.check{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+}
+
+
+.resumeBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

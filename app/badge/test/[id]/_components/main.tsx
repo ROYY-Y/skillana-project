@@ -157,7 +157,6 @@ export default function MainBox({id} : InputProps){
         localStorage.setItem("imgUrl", badge.imgUrl)
         router.push("/badge/test/result")
     }
-
     //-----------------------------------------------------------------------------------------
     return (
         <>

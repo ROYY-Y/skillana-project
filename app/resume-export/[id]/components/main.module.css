@@ -137,3 +137,31 @@
     justify-content: center;
     align-items: center;
 }
+
+.downloadBox{
+   padding-top: 5em;
+}
+
+.downloadBtn{
+    display: flex;
+    font-size: larger;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    width: 45%;
+    padding: 3%;
+    background-color: #5F28CD;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all .2s ease;
+    img{
+        width: 1.8em;
+        height: 1.8em;
+        filter: invert(1);
+    }
+}
+
+.downloadBtn:hover{
+    background-color: #533d8b;
+}

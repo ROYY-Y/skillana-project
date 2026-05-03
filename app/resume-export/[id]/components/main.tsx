@@ -5,6 +5,10 @@ import { jwtDecode } from "jwt-decode"
 import { useRouter } from "next/navigation"
 import { ResumeData } from "./templates/type/resume"
 import Template4 from "./templates/template4"
+import Template1 from "./templates/template1"
+import Template2 from "./templates/template2"
+import Template3 from "./templates/template3"
+import Template5 from "./templates/template5"
 export interface IUserProfile {
     _id: string;
     firstName: string;
@@ -75,7 +79,8 @@ interface IBadgeWithCat {
     imgUrl: string;
 }
 
-export default function ResumeExport() {
+
+export default function ResumeExport({id} : {id : number}) {
     const [user, setUser] = useState<IUserProfile | null>(null);
     const [badgeInfo, setBadgeInfo] = useState<IBadgeDetail[] | null>(null);
     const [currCat, setCurrCat] = useState("All");
@@ -191,9 +196,34 @@ export default function ResumeExport() {
         setNumSelectedBadge(prev => currentlySelected ? prev - 1 : prev + 1);
     };
 
+    const handleDownloadClick = async () => {
+        if (!myResumeData) return alert("Data not ready");
 
+        try {
+            const response = await fetch('/api/print', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            // ส่ง selectedTemplate จาก state ไปให้ API
+                body: JSON.stringify({ data: myResumeData, templateId: id }),
+            });
+
+            if (!response.ok) throw new Error("Download failed");
+
+            // สร้าง Blob เพื่อสั่ง Download ไฟล์ใน Browser
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "my_resume.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (err) {
+            console.error(err);
+            alert("Error downloading PDF");
+        }
+    };
     if (!mounted) return null;
-    console.log(user)
     return (
         <>
             <section className={styles.AddSkillBox}>
@@ -243,10 +273,22 @@ export default function ResumeExport() {
 
             <section className={styles.resumeBox}>
                    {myResumeData ? (
-                    <Template4 data={myResumeData} size={"small"} />
+                    // เลือก render template ตาม id ที่รับมา
+                    id === 1 ? <Template1 data={myResumeData} size="small" /> :
+                    id === 2 ? <Template2 data={myResumeData} size="small" /> :
+                    id === 3 ? <Template3 data={myResumeData} size="small" /> :
+                    id === 5 ? <Template5 data={myResumeData} size="small" /> :
+                    <Template4 data={myResumeData} size="small" /> // default
                     ) : (
-                        <p>Loading resume...</p> 
+                        <p>Loading...</p>
                     )}
+            </section>
+
+            <section className={styles.downloadBox}>
+                <div className = {styles.downloadBtn} onClick={handleDownloadClick}>
+                        <img src="/icon/pdf-file.png" alt="pdf-icon" />
+                        Download PDF
+                </div>
             </section>
         </>
     );

@@ -17,6 +17,10 @@ export default function Template4({ data, size }: Props) {
   const containerClass = isMounted 
     ? (size === "full" ? mainstyles.ResumeFull : mainstyles.ResumeSmall)
     : mainstyles.Resume; 
+
+  if (!data) {
+    return <div>Loading...</div>; // หรือ return null; ถ้าไม่อยากให้แสดงอะไรเลย
+  }
   return (
     <>
         <div className ={size == "full" ? mainstyles.ResumeFull :mainstyles.ResumeSmall } >

@@ -29,9 +29,8 @@ export default function Template4({ data, size }: Props) {
                   <section className={styles.leftSideContainer}>
                       
                       <div className={styles.imgBox}>
-                        <img className={styles.profileImg} src={"/badges/web_badge/html.png"}></img>
+                        <img className={styles.profileImg} src={data.profileImg}></img>
                       </div>
-
                       <div className = {styles.aboutMeBox}>
                           <div style={{display : "flex", gap : "1em" , width : "100%", alignItems : "flex-end"}}>
                               <img className={styles.iconStyle}  src={"/icon/user.png"}></img>
@@ -71,7 +70,6 @@ export default function Template4({ data, size }: Props) {
                               {data.badges?.map((badge,idx)=>(<li key={idx}>{badge.badgeName}</li>))}
                           </ul>
                       </div>
-                      
                       <div className={styles.languageBox}>
                          <div className = {styles.languageBoxTitle}>
                               <img style={{width : "12%", height : "12%" , filter : "invert(1)"}} src={"/icon/language.png"}></img>
@@ -115,7 +113,6 @@ export default function Template4({ data, size }: Props) {
                               <img style={{width : "12%", height : "75%" }} src={"/icon/suitcase.png"}></img>
                               <h3>Experience</h3>
                       </div>
-
                       {data.experience?.map((experience, idx) =>(
                             <div key={idx} className={styles.educationBox}>
                             <div key={idx} className={styles.timeLine}>

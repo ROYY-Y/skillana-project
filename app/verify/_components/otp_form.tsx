@@ -8,6 +8,10 @@ export default function OtpForm(){
     const itemsRef = useRef<(HTMLInputElement | null)[]>([]); // รอทำงานเชื่อมกับ back-end
     const [email, setEmail] = useState("");
     const [method, setMethod] = useState("");
+    const [isError, setIsError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
+    const [isResendText, setIsResendText] = useState(false);
+    const [isResendErr, setIsResendErr] = useState(false);
     const router = useRouter();
     useEffect(() => {
     // สั่งให้ช่องแรก (index 0) focus
@@ -41,7 +45,8 @@ export default function OtpForm(){
         .join("");
 
         if (otpString.length != 6) {
-            alert("Please enter all 6 digits");
+            setIsError(true)
+            setErrorMsg("Please enter all 6 digits.")
             return;
         }
 
@@ -52,7 +57,8 @@ export default function OtpForm(){
         })
         const data = await res.json();
         if(!res.ok){
-            console.error(data.message)
+            setIsError(true);
+            setErrorMsg("Invalid or expired OTP.")
             return;
         }else{
             if(method == "register"){
@@ -78,34 +84,54 @@ export default function OtpForm(){
         }
     }
 
-    const resend = ()=>{
+    const resend = async ()=>{
+        const otpRes = await fetch("http://localhost:3000/api/auth/otp",{
+                    method : "POST",
+                    headers : {"Content-Type" : "application/json"},
+                    body : JSON.stringify({email: email})
+        })
+        if(!otpRes.ok){
+            setIsResendErr(true);
+        }
+        else setIsResendErr(false);
 
+        setIsResendText(true);
     }
     return (<>
-        <section className={style.formBox}>
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-                <OtpInput
-                    key={index}
-                    // เก็บ Element ลงใน Array ตามลำดับ index
-                    ref={(el) =>{
-                        if (el) itemsRef.current[index] = el;
-                    }}
-                    onChange={(e: any) => {
-                            if(!/^[0-9]*$/.test(e.target.value)){
-                                e.target.value = "";
-                                return;
+        <div>
+            <section className={style.formBox}>
+                {[0, 1, 2, 3, 4, 5].map((index) => (
+                    <OtpInput
+                        key={index}
+                      
+                        ref={(el) =>{
+                            if (el) itemsRef.current[index] = el;
+                        }}
+                        onChange={(e: any) => {
+                                if(!/^[0-9]*$/.test(e.target.value)){
+                                    e.target.value = "";
+                                    return;
+                                }
+                                if (e.target.value.length === 1) {
+                                handleFocusNext(index);
                             }
-                            if (e.target.value.length === 1) {
-                            handleFocusNext(index);
-                        }
-                    }}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                />
-            ))}
-        </section>
-        <p style={{fontSize : "small"}}>Don’t received the verification codes? &nbsp;
-        <button className= {style.resendBtn} onClick={resend}>Resend</button>
-        </p>
+                        }}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+
+                        isError = {isError}
+
+                    />
+                ))}
+            </section>
+            <p className={style.errorText}>{isError ? errorMsg : ""}</p>
+        </div>
+
+        <div>
+            <p style={{fontSize : "large"}}>Don’t received the verification codes? &nbsp;
+            <button className= {style.resendBtn} onClick={resend}>Resend</button>
+            </p>
+            <p className = {`${isResendErr ? style.resendErr : style.resendComplete }`}>{isResendText ? isResendErr ? "Please wait 1 minute before resend OTP.": "Resend OTP successfully!" : ""}</p>
+        </div>
 
         <button className= {style.verify} onClick={handleSubmit}>Verify</button>
     </>

@@ -24,56 +24,59 @@ export default function BadgePage({id} : InputProps) {
     const [imgUrl,setImgUrl] = useState("");
     const [nQuestion, setNQuestion] = useState(0);
     const [isOwn, setIsown] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
                
     
-    useEffect(()=>{
-        try{
-            const token = localStorage.getItem("token");
-            if(!token){ router.push("/login"); return}
-            const decodeToken = jwtDecode(token) as any;
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                setIsLoading(true); // เริ่ม Loading
+                
+                const token = localStorage.getItem("token");
+                if (!token) { router.push("/login"); return; }
+                const decodeToken = jwtDecode(token) as any;
+                const userId = decodeToken.id || decodeToken.sub || decodeToken._id;
+                
+                if (!id) { router.push("/collections"); return; }
 
-            const userId = decodeToken.id || decodeToken.sub || decodeToken._id;
-            if(!id) {router.push("/collections"); return}
-            const fetchData = async ()=>{
-                const res = await fetch(`/api/badges/${id}`);
-                if(!res.ok){
-                    router.push("/collections")
+                // ดึงข้อมูลทั้ง Badge และ User พร้อมกันเพื่อความเร็ว
+                const [resBadge, resUser] = await Promise.all([
+                    fetch(`/api/badges/${id}`),
+                    fetch(`/api/users/${userId}`)
+                ]);
+
+                if (resBadge.ok) {
+                    const result = await resBadge.json();
+                    const data = result.badge;
+                    if (data) {
+                        setBadgeTitle(data.badgeName);
+                        setBadgeDescription(data.description);
+                        setImgUrl(data.imgUrl);
+                        setTLimit(data.criteria.timeLimit.slice(0, 2));
+                        setPScore(data.criteria.passingScore);
+                        setNQuestion(data.criteria.questionNum);
+                    }
+                } else {
+                    router.push("/collections");
                     return;
                 }
-                const result = await res.json()
-                const data = result.badge
 
-                if (data) {
-                    setBadgeTitle(data.badgeName);
-                    setBadgeDescription(data.description);
-                    setImgUrl(data.imgUrl);
-                    setTLimit(data.criteria.timeLimit.slice(0, 2));
-                    setPScore(data.criteria.passingScore);
-                    setNQuestion(data.criteria.questionNum);
+                if (resUser.ok) {
+                    const data = await resUser.json();
+                    const userBadges = data.badges as any[];
+                    const hasBadge = userBadges.find(badge => badge.badgeId === id);
+                    if (hasBadge) setIsown(true);
                 }
-            };   
-            fetchData();
 
-            const fetchUser = async ()=>{
-                const res = await fetch(`/api/users/${userId}`)
-                if(!res.ok){
-                    router.push("/collections")
-                    return;
-                }
-                const data = await res.json();
-                const userBadges = data.badges as any[]
-
-                const badge = userBadges.find(badge => badge.badgeId === id)
-                if(badge){
-                    setIsown(true)
-                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setIsLoading(false); // ปิด Loading เมื่อทุกอย่างเสร็จสิ้น
             }
-            fetchUser();
-        }
-        catch(err){
-            console.error(err);
-        }
-    },[])
+        };
+
+        loadData();
+    }, [id, router]);
     
     
 
@@ -85,6 +88,20 @@ export default function BadgePage({id} : InputProps) {
 
     }
     
+    if(isLoading){
+        return (
+            <>
+                <section className={style.frame}>
+                    <div className={style.mainBoxLoad}>
+                        <div className={style.loadingWrapper}>
+                            <div className={style.spinner}></div>
+                        </div>
+                    </div>
+                </section>
+            </>
+        )
+    }
+
     return (
         <section className={style.frame}>
             <div className ={style.mainBox}>

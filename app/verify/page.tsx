@@ -17,7 +17,7 @@ export default function Login(){
                 <h3 style={{fontSize : "1.6em", fontWeight : "700"}}>OTP Verification</h3>
             
                 <div>
-                    <p style={{textAlign : "center"}}>
+                    <p style={{textAlign : "center" , fontSize : "large"}}>
                         Enter the 6 digits code we sent to<br></br>
                         {userEmail} to verify
                     </p>

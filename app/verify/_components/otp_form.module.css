@@ -11,6 +11,7 @@
     cursor: pointer;
     background: none;
     border: none;
+    font-size: large;
 }
 
 .resendBtn:hover{
@@ -33,4 +34,20 @@
 .verify:hover{
     background-color: #411c8d;
     color: rgb(200, 199, 199);
+}
+
+.errorText{
+    color: red;
+    font-size: medium;
+    margin-top: .5em;
+}
+
+.resendErr{
+    font-size: medium;
+    color: red;
+}
+
+.resendComplete{
+    font-size: medium;
+    color: lime;
 }

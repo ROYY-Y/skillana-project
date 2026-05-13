@@ -3,6 +3,7 @@ import {ResumeData} from "./type/resume"
 import mainstyles from "./main_style.module.css"
 import styles from "./template4.module.css"
 import { useEffect,useState } from "react"
+
 type Props = {
   data: ResumeData;
   size: "full" | "small";

@@ -50,14 +50,14 @@ export default function ResultMain(){
                 
                 <article className={styles.contentBox}>
                     <h2 style={{fontSize : "xx-large"}}>{pass ? titlePass : titleNotPass}</h2>
-                    <h3 style={{fontWeight : "500"}}>{pass ? subTitlePass : subTitleNotPass}</h3>
+                    <h3 style={{fontWeight : "500", fontSize: "x-large"}}>{pass ? subTitlePass : subTitleNotPass}</h3>
                     <div className={styles.descriptionSection}>
-                        <p style={{fontSize : "small"}}>{pass ? desPass : desNotPass}</p>
+                        <p style={{fontSize : "medium"}}>{pass ? desPass : desNotPass}</p>
                     </div>
 
                     <div className={styles.resultBox}>
                         <div style={{display : "flex", alignItems : "center", paddingLeft : "1em"}}>
-                            <p>Result :</p>
+                            <p style={{fontSize : "large" , fontWeight: "500"}}>Result :</p>
                         </div>
                         <div className={styles.resultInfoContainer}>
                             {/* แก้ไข Syntax ตรง diagram ให้ใส่ style ได้ถูกต้อง */}
@@ -69,8 +69,8 @@ export default function ResultMain(){
                             </div>
                             
                             <div className={styles.info}>
-                                <p>Score : {score} / {total}</p>
-                                <p>Time Remain : {timeRemain}</p>
+                                <p style={{fontSize : "large" , fontWeight: "500"}}>Score : {score} / {total}</p>
+                                <p style={{fontSize : "large" , fontWeight: "500"}}>Time Remain : {timeRemain}</p>
                             </div>
                         </div>
                     </div>

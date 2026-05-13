@@ -9,3 +9,7 @@
     background-color: white;
     color: black;
 }
+
+.errorBorder{
+    outline: 2px solid red;
+}

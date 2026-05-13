@@ -16,9 +16,27 @@ export default function Form(){
     const [isLoading, setIsLoading] = useState(false)
 
     const [emailMessage, setEmailMessage] = useState("")
-
+    const [passMessage, setPassMessage] = useState("")
     useEffect(()=>{
         localStorage.removeItem("token");
+    }, []);
+
+    useEffect(() => {
+        const handleGlobalKeyDown = (event: KeyboardEvent) => {
+  
+        if (event.key === 'Enter') {
+            if (!isLoading) {
+                handleSubmit();
+            }
+        }
+        };
+
+        window.addEventListener('keydown', handleGlobalKeyDown);
+
+
+        return () => {
+        window.removeEventListener('keydown', handleGlobalKeyDown);
+        };
     }, []);
 
     async function handleSubmit(){
@@ -30,11 +48,12 @@ export default function Form(){
             setEmailMessage("Plase enter an email.")
             setIsEmailError(true);
             setIsPasswordError(true);
+            setPassMessage("Plase enter an password.")
             setIsLoading(false);
             return;
         }
         else if(!email){setEmailMessage("Plase enter an email."); setIsEmailError(true); setIsLoading(false); return;}
-        else if(!pass){ setIsPasswordError(true);  setIsLoading(false); return;}
+        else if(!pass){ setIsPasswordError(true); setPassMessage("Plase enter an password."); setIsLoading(false); return;}
 
         try{
             const res = await fetch("/api/auth/login",{
@@ -54,8 +73,8 @@ export default function Form(){
                 })
                 
                 const otpData = await otpRes.json();
-                
                 if(!otpRes.ok){
+                    
                     setIsLoading(false);
                     console.error(otpData.message)
                     return;
@@ -64,6 +83,11 @@ export default function Form(){
                     sessionStorage.setItem("method","login")
                     router.push("/verify");
                 }
+            }else{
+                setIsEmailError(true);
+                setIsPasswordError(true);
+                setEmailMessage("")
+                setPassMessage("Incorrect email or password.");
             }
         }
         catch(error){
@@ -86,6 +110,12 @@ export default function Form(){
         if(value) setIsPasswordError(false);
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+        console.log("test")
+        handleSubmit();
+    }
+    };
     return(
         <>
             <div className={style.container}>
@@ -94,7 +124,7 @@ export default function Form(){
                 ></InputComponent>
                 <div>
                     <InputComponent ref={passRef} label="Password" placeholder="Enter your password"
-                     size= "medium" isPassword = {true} isError = {isPasswordError} message={isPasswordError ? "Please enter a password." : ""}
+                     size= "medium" isPassword = {true} isError = {isPasswordError} message={passMessage}
                      onChange={handlePasswordChange}
                      ></InputComponent>
                     <Link href = "#" className = {style.link} >Forgot password?</Link>

@@ -24,7 +24,7 @@ export default function Template4({ data , size} : Props ) {
   return (
     <>
         <div className ={size == "full" ? mainstyles.ResumeFull :mainstyles.ResumeSmall } >
-          
+            
         </div>
     </>
   );

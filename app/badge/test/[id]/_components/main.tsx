@@ -89,6 +89,17 @@ export default function MainBox({id} : InputProps){
         return () => clearInterval(timerId);
     }, [timeLeft])
 
+    useEffect(() => {
+        if (timeLeft !== null && timeLeft <= 0) {
+            const timer = setTimeout(() => {
+                alert("Time for this section has ended. Please click 'OK' to submit.");
+                handleSubmit();
+            }, 100);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [timeLeft]);
+
     const formatTime = (seconds: number) => {
         if(seconds <= 0) return "Timeout";
         const mins = Math.floor(seconds / 60);

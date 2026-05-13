@@ -134,8 +134,23 @@
 
 .resumeBox{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-items: center;     /* จัดกึ่งกลางแนวตั้ง */
+    width: 100%;             /* ให้เต็มความกว้างของ column ตัวเอง (1fr) */
+    height: 100%;            /* ให้สูงเต็มหน้าจอ หรือเต็ม parent */
+    padding: 20px 0;         /* เว้นบนล่างนิดหน่อย ไม่ให้ชิดขอบจอ */
+    overflow: hidden;
+}
+
+.previewWrapper {
+    width: 147mm;   
+    height: 207.9mm;
+    position: relative; 
+    flex-shrink: 0;
+    display: flex;
+    overflow: hidden;
+    background-color: white; /* พื้นหลังกระดาษ */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* ใส่เงาให้ดูเป็นใบเรซูเม่ลอยขึ้นมา */
 }
 
 .downloadBox{

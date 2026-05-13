@@ -1,9 +1,11 @@
 .ResumeSmall{
-    width: 150mm;
-    height: 187mm;
-    box-sizing: border-box;
-    background: white;
-    outline: 2px solid black;
+  width: 210mm; /*150mm*/
+  height: 297mm; /*187mm*/
+  box-sizing: border-box;
+  background: white;
+  position: absolute; 
+  transform: scale(0.7);
+  transform-origin: top left;
 }
 
 .Resume{

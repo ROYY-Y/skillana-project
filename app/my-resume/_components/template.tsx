@@ -8,17 +8,18 @@ import styles from "@/app/my-resume/_components/template.module.css";
 export function Template(){
     const router = useRouter();
     const templates = [
-        "resumes/resume_template.png",
+        "resumes/resume_template (3).png",
         "resumes/resume_template (1).png",
         "resumes/resume_template (2).png",
         "resumes/resume_template.png",
-        "resumes/resume_template (1).png"
+        "resumes/resume_template (4).png"
     ];
 
     const [user, setUser] = useState(null);
     const [selectedImg, setSelectedImg] = useState(null);
     const [isClosing, setIsClosing] = useState(false);
     const [showIncompleteModal, setShowIncompleteModal] = useState(false);
+    const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,9 +58,11 @@ export function Template(){
     };
 
     const handleSelectTemplate = () => {
+        if (selectedIdx === null) return;
+        const templateId = selectedIdx + 1;
         if (checkDataComplete(user)) {
             // ถ้าข้อมูลครบ 
-            console.log("wow");
+            router.push(`/resume-export/${templateId}`);
         } else {
             // ถ้าไม่ครบ
             setSelectedImg(null);
@@ -81,7 +84,10 @@ export function Template(){
                 <div 
                     key={index} 
                     className={styles.itemWrapper} 
-                    onClick={() => setSelectedImg(src)}
+                    onClick={() => {
+                        setSelectedImg(src);
+                        setSelectedIdx(index);
+                    }}
                 >
                     <img src={src} alt="Resume Template" className={styles.item} />
                     <div className={styles.zoomButton}>

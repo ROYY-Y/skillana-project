@@ -272,16 +272,19 @@ export default function ResumeExport({id} : {id : number}) {
             </section>
 
             <section className={styles.resumeBox}>
-                   {myResumeData ? (
-                    // เลือก render template ตาม id ที่รับมา
-                    id === 1 ? <Template1 data={myResumeData} size="small" /> :
-                    id === 2 ? <Template2 data={myResumeData} size="small" /> :
-                    id === 3 ? <Template3 data={myResumeData} size="small" /> :
-                    id === 5 ? <Template5 data={myResumeData} size="small" /> :
-                    <Template4 data={myResumeData} size="small" /> // default
-                    ) : (
-                        <p>Loading...</p>
-                    )}
+                {myResumeData ? (
+                    <div className={styles.previewWrapper}>
+                        {
+                            id === 1 ? <Template1 data={myResumeData} size="small" /> :
+                            id === 2 ? <Template2 data={myResumeData} size="small" /> :
+                            id === 3 ? <Template3 data={myResumeData} size="small" /> :
+                            id === 5 ? <Template5 data={myResumeData} size="small" /> :
+                            <Template4 data={myResumeData} size="small" /> // default
+                        }
+                    </div>
+                ) : (
+                    <p>Loading...</p>
+                )}
             </section>
 
             <section className={styles.downloadBox}>

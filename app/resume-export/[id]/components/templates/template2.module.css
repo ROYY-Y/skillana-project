@@ -1,25 +1,18 @@
-/* Resume.module.css */
-
 .resume {
-  width: 99.5rem; /* 1000 / 2 */
-  min-height: 140.5rem; /* 1450 / 2 */
+  width: 210mm;
+  height: 297mm;
 
   margin: 0 auto;
   background: #f4f4f4;
   position: relative;
-  overflow: hidden;
+
   display: flex;
 
-  padding: 27.5px 27.5px 60px 27.5px;
-
+  padding: 5mm;
   box-sizing: border-box;
- 
 
-  transform: scale(0.5);
-  transform-origin: top left;
+  overflow: hidden;
 }
-
-
 
 .leftPanel {
   width: 60%;
@@ -29,49 +22,49 @@
 .leftPanel::before {
   content: "";
   position: absolute;
-  top: 10px;
-  left: 2rem;
+  top: 5px;
+  left: 1rem;
   width: 82%;
   height: 94%;
   background: #2f394f;
-  border-radius: 35px;
+  border-radius: 17.5px;
   z-index: 0;
 }
 
 .profileWrapper {
   position: relative;
   z-index: 2;
-  margin-top: 10rem;
-  margin-left:12rem;
+  margin-top: 5rem;
+  margin-left: 6rem;
 }
 
 .profileCircle img {
-  width: 20rem;
-  height: 20rem;
-  border: 10px solid white;
+  width: 10rem;
+  height: 10rem;
+  border: 5px solid white;
   border-radius: 50%;
   position: relative;
   object-fit: cover;
 }
 
 .head {
-  width: 95px;
-  height: 95px;
+  width: 47.5px;
+  height: 47.5px;
   background: #f4f4f4;
   border-radius: 50%;
-  
-  top: 45px;
+
+  top: 22.5px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .body {
-  width: 170px;
-  height: 90px;
+  width: 85px;
+  height: 45px;
   background: #f4f4f4;
-  border-radius: 90px 90px 0 0;
+  border-radius: 45px 45px 0 0;
   position: absolute;
-  bottom: 30px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -79,31 +72,30 @@
 .aboutCard {
   position: relative;
   z-index: 2;
-  width: 35rem;;
+  width: 17.5rem;
   background: #c9cad8;
-  border-radius: 8px;
-  padding: 38px;
-  margin-top: 95px;
-  margin-left: -55px;
-  
+  border-radius: 4px;
+  padding: 19px;
+  margin-top: 47.5px;
+  margin-left: -27.5px;
 }
 
 .sectionTitle {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin : 0 0 2.5rem 3.5rem;
+  gap: 7px;
+  margin: 0 0 1.25rem 1.75rem;
 }
 
 .sectionTitle h2 {
   margin: 0;
-  font-size: 45px;
+  font-size: 22.5px;
   color: #111;
 }
 
 .aboutCard p {
-  margin: 0 0 0 3.5rem ;
-  font-size: 32px;
+  margin: 0 0 0 1.75rem;
+  font-size: 16px;
   line-height: 1.6;
   color: #111;
   text-align: justify;
@@ -114,39 +106,39 @@
 .contactSection {
   position: relative;
   z-index: 2;
-  margin-top: 2.5rem;
-  margin-left: 1.9rem;
+  margin-top: 1.25rem;
+  margin-left: 0.95rem;
   color: white;
 }
 
 .contactHeader {
-  width: 30rem;
-  height: 7rem;;
+  width: 15rem;
+  height: 3.5rem;
   background: #d2d3df;
   color: #111;
-  padding: 1.5rem 1.5rem;
-  margin : 5rem 0 2.5rem 0 ;
+  padding: 0.75rem 0.75rem;
+  margin: 2.5rem 0 1.25rem 0;
 }
 
 .contactHeader h3 {
   margin: 0;
-  font-size: 45px;
+  font-size: 22.5px;
 }
 
 .contactItem {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin : 0 0 2.5rem 1.5rem;
+  gap: 9px;
+  margin: 0 0 1.25rem 0.75rem;
 }
 
 .contactItem span {
-  font-size: 32px;
+  font-size: 16px;
 }
 
 .iconCircle {
-  width: 52px;
-  height: 52px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #d2d3df;
   display: flex;
@@ -154,72 +146,69 @@
   justify-content: center;
   color: #2f394f;
 }
-.contactItem img { 
-    width : 5rem;
-    height : 5rem;
+
+.contactItem img {
+  width: 2.5rem;
+  height: 2.5rem;
 }
+
 /* RIGHT PANEL */
 
 .rightPanel {
   width: 58%;
-  padding: 15rem 0 0 2.5rem;
+  padding: 7.5rem 0 0 1.25rem;
   box-sizing: border-box;
   position: relative;
   z-index: 2;
-  
 }
 
 /* HEADER */
 
 .header {
-  min-width: 50rem;
-  height: 15rem;;
+  min-width: 25rem;
+  height: 7.5rem;
   background: #c9cad8;
-  border-radius: 100px;;
-  padding: 35px 45px;
-    display : flex;
-    justify-content: center;
-    align-items: center;
-  right: -32rem;
+  border-radius: 50px;
+  padding: 17.5px 22.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -16rem;
   z-index: 10;
-  position : absolute;
+  position: absolute;
 }
 
 .header h3 {
   margin: 0;
-  font-size: 54px;
+  font-size: 27px;
   font-weight: 800;
   color: #111827;
-  letter-spacing: 1px;
-  
- 
+  letter-spacing: 0.5px;
 }
-
-
 
 /* SECTION */
 
 .section {
-  margin-top: 70px;
+  margin-top: 35px;
 }
 
 .headingRow {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 35px;
+  gap: 8px;
+  margin-bottom: 17.5px;
 }
 
 .smallCircle {
-  width: 18px;
-  height: 18px;
-  border: 4px solid #2f394f;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #2f394f;
   border-radius: 50%;
 }
 
 .headingRow h2 {
   margin: 0;
-  font-size: 50px;
+  font-size: 25px;
   font-weight: 800;
   color: #1f2a44;
 }
@@ -227,36 +216,32 @@
 /* TIMELINE */
 
 .timeline {
-  border-left: 2px solid #aeb0b9;
-  margin-left: 8px;
-  padding-left: 28px;
+  border-left: 1px solid #aeb0b9;
+  margin-left: 4px;
+  padding-left: 14px;
 }
 
 .timelineItem {
-  margin-bottom: 42px;
+  margin-bottom: 21px;
 }
 
 .timelineItem h4 {
-    
-  margin: 0 0 10px 0;
-  font-size: 40px;
+  margin: 0 0 5px 0;
+  font-size: 20px;
   font-weight: 800;
   color: #1d2436;
 }
 
 .timelineItem h3 {
-    
   margin: 0;
-  font-size: 36px;
+  font-size: 18px;
   font-weight: 400;
   color: #1d2436;
-  margin-bottom : 2.5rem;
+  margin-bottom: 1.25rem;
 }
 
-
-
 .timelineItem span {
-  font-size: 18px;
+  font-size: 9px;
 }
 
 /* EXPERIENCE */
@@ -264,21 +249,17 @@
 .experience {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 25px;
 }
 
-
-
-
 .jobDescription {
-  
-  padding-left: 28px;
-  margin-left: 5px;
+  padding-left: 14px;
+  margin-left: 2.5px;
 }
 
 .jobDescription p {
   margin: 0;
-  font-size: 32px;
+  font-size: 16px;
   line-height: 1.7;
   text-align: justify;
   color: #222;
@@ -287,34 +268,35 @@
 /* SKILLS */
 
 .skills {
-  border-left: 2px solid #aeb0b9;
-  padding-left: 28px;
-  margin-left: 8px;
+  border-left: 1px solid #aeb0b9;
+  padding-left: 14px;
+  margin-left: 4px;
 }
 
 .skills ul {
   margin: 0;
-  padding-left: 28px;
+  padding-left: 14px;
 }
 
 .skills li {
-  font-size: 18px;
-  margin-bottom: 14px;
+  font-size: 9px;
+  margin-bottom: 7px;
   color: #1c2235;
 }
 
 .skillItem {
-  font-size : 32px;
-  color : #1c2235;
+  font-size: 16px;
+  color: #1c2235;
 }
+
 /* BOTTOM SHAPE */
 
 .bottomShape {
   position: absolute;
-  bottom: -50px;
-  left: -80px;
+  bottom: -25px;
+  left: -40px;
   width: 120%;
-  height: 180px;
+  height: 90px;
   background: #2f394f;
   transform: rotate(-6deg);
 }
@@ -322,9 +304,18 @@
 .bottomShape::before {
   content: "";
   position: absolute;
-  top: -32px;
-  left: -20px;
+  top: -16px;
+  left: -10px;
   width: 120%;
-  height: 50px;
+  height: 25px;
   background: #d8d8d8;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
 }

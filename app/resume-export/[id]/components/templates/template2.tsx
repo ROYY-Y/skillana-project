@@ -26,9 +26,7 @@ export default function Template4({ data, size }: Props) {
   return (
     <>
        <div className ={size == "full" ? mainstyles.ResumeFull :mainstyles.ResumeSmall } >
-          
- 
-    <div className={styles.resume}>
+      <div className={styles.resume}>
     
       <div className={styles.leftPanel}>
         <div className={styles.header}>
@@ -119,7 +117,7 @@ export default function Template4({ data, size }: Props) {
             {data.experience?.map((experience,idx)=>(
 
               <div key={idx} className={styles.timeline}>
-                <h4 style={{fontSize: '36px', color: '#1d2436'}}>{experience.title} | {`(${experience.startDate.slice(0,4)}-${experience.endDate.slice(0,4)})`}</h4>
+                <h4 style={{fontSize: '20px', color: '#1d2436'}}>{experience.title} {`(${experience.startDate.slice(0,4)}-${experience.endDate.slice(0,4)})`}</h4>
                 <div className={styles.jobDescription}>
                   <p>{experience.description}</p>
                 </div>
@@ -144,8 +142,8 @@ export default function Template4({ data, size }: Props) {
           <div className={styles.skills}>
            {data.badges?.map((badge, idx) => (
               <div key={idx} className={styles.skillItem}>
-                <img src={badge.imgUrl} alt={badge.badgeName} />
-                <h3>{badge.badgeName}</h3>
+                
+                <p>{badge.badgeName}</p>
               </div>
             ))}
           </div>
@@ -157,7 +155,9 @@ export default function Template4({ data, size }: Props) {
     </div>
   
 
-        </div>
+      
+ 
+            </div>
     </>
   );
 }

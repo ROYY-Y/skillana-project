@@ -32,7 +32,7 @@ export default function Template4({ data, size }: Props) {
         </div>
 
         <div className={styles.headerText}>
-          <p style={{color :"white" , fontSize : "32px"}}>{data.firstName} {data.lastName}</p>
+          <h1 style={{color :"white" }}>{data.firstName} {data.lastName}</h1>
          
         </div>
       </header>
@@ -113,7 +113,7 @@ export default function Template4({ data, size }: Props) {
                    {data.experience?.map((experience,idx)=>(
 
               <div key={idx} >
-                <h4 style={{fontSize: '24px', color: '#1d2436'}}>{experience.title}            {`(${experience.startDate.slice(0,4)}-${experience.endDate.slice(0,4)})`}</h4>
+                <h3 style={{fontSize: '18px', color: '#1d2436'}}>{experience.title}            {`(${experience.startDate.slice(0,4)}-${experience.endDate.slice(0,4)})`}</h3>
                 <div className={styles.jobDescription}>
                   <p>{experience.description}</p>
                 </div>
@@ -141,7 +141,7 @@ export default function Template4({ data, size }: Props) {
 
                 <div className={styles.timelineContent}>
                  
-                          <h3>Education Level</h3>
+                    <h3>Education Level</h3>
                     <h4>{data.education.level}</h4>
 
                     <h3>Institution</h3>

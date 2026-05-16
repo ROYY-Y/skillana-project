@@ -1,139 +1,330 @@
+/* Resume.module.css */
+
+.resume {
+  width: 99.5rem; /* 1000 / 2 */
+  min-height: 140.5rem; /* 1450 / 2 */
+
+  margin: 0 auto;
+  background: #f4f4f4;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+
+  padding: 27.5px 27.5px 60px 27.5px;
+
+  box-sizing: border-box;
+ 
+
+  transform: scale(0.5);
+  transform-origin: top left;
+}
 
 
-.profile {
-  width: 45%;
-  height: 90%;
-  border-radius: 30px;
-  background-color: rgb(134, 129, 129);
-  margin: 3.5rem 0 0 2.5rem;
-  z-index: 2;
-  display: flex;
-  position : relative;
-  overflow : visible;
+
+.leftPanel {
+  width: 60%;
+  position: relative;
 }
-.profileImg {
-  width: 12rem;
-  height: 12rem;
-  margin : 3rem 0 0 2.5rem;
-  object-fit: cover;
-  object-position: center;
-border-radius: 50%;
-}
-.aboutMeContainer {
-  width: 50%;
-  height: 40%;
-  background-color: red;
-  display: flex;
+
+.leftPanel::before {
+  content: "";
   position: absolute;
-  bottom: 30%;      
-  left: -2rem;      
-  z-index: 100;  
-  border-radius : 15px;   
-  flex-direction: column; 
+  top: 10px;
+  left: 2rem;
+  width: 82%;
+  height: 94%;
+  background: #2f394f;
+  border-radius: 35px;
+  z-index: 0;
 }
-.header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  display : flex;
-  flex-direction: baseline;
-  gap : 1.5rem;
-  margin : 1rem 0 1rem 4.5rem;
+
+.profileWrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: 10rem;
+  margin-left:12rem;
+}
+
+.profileCircle img {
+  width: 20rem;
+  height: 20rem;
+  border: 10px solid white;
+  border-radius: 50%;
+  position: relative;
+  object-fit: cover;
+}
+
+.head {
+  width: 95px;
+  height: 95px;
+  background: #f4f4f4;
+  border-radius: 50%;
   
-}
-.userIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.name {
-    width: 30rem;
-    height: 10rem;
-    background-color: green;
-    z-index: 1000;
-    position : absolute;
-    margin : 2.5rem 0 0 17.5rem;
-    border-radius: 100px;
-    text-align: center;
-    font-size: 32px;
-    color: white;
-    display: flex;
-    align-items: center;
-   padding-left : 2rem;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.contact {
-  width: 15rem;
-  height: 4rem;
-  background-color: blue;
-  position : absolute;
-  bottom: 12rem;      
-  left: 0;      
-  z-index: 100;  
-  border-radius : 5px;   
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left : 2.5rem;
-}
-.contactList{
-    list-style: none;
-   margin-left: -12rem;
-    
-    display: flex;
-    flex-direction: column;
-   
-    font-size : 16px;
-    bottom : 2.5rem;;
-    position : absolute;
-}
-.contactList li img{
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-right: 0.5rem;
+.body {
+  width: 170px;
+  height: 90px;
+  background: #f4f4f4;
+  border-radius: 90px 90px 0 0;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.resumeSection {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.aboutCard {
+  position: relative;
+  z-index: 2;
+  width: 35rem;;
+  background: #c9cad8;
+  border-radius: 8px;
+  padding: 38px;
+  margin-top: 95px;
+  margin-left: -55px;
+  
 }
 
 .sectionTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  border-bottom: 2px solid #000;
-  padding-bottom: 4px;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin : 0 0 2.5rem 3.5rem;
 }
 
-.entry {
+.sectionTitle h2 {
+  margin: 0;
+  font-size: 45px;
+  color: #111;
+}
+
+.aboutCard p {
+  margin: 0 0 0 3.5rem ;
+  font-size: 32px;
+  line-height: 1.6;
+  color: #111;
+  text-align: justify;
+}
+
+/* CONTACT */
+
+.contactSection {
+  position: relative;
+  z-index: 2;
+  margin-top: 2.5rem;
+  margin-left: 1.9rem;
+  color: white;
+}
+
+.contactHeader {
+  width: 30rem;
+  height: 7rem;;
+  background: #d2d3df;
+  color: #111;
+  padding: 1.5rem 1.5rem;
+  margin : 5rem 0 2.5rem 0 ;
+}
+
+.contactHeader h3 {
+  margin: 0;
+  font-size: 45px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin : 0 0 2.5rem 1.5rem;
+}
+
+.contactItem span {
+  font-size: 32px;
+}
+
+.iconCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #d2d3df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2f394f;
+}
+.contactItem img { 
+    width : 5rem;
+    height : 5rem;
+}
+/* RIGHT PANEL */
+
+.rightPanel {
+  width: 58%;
+  padding: 15rem 0 0 2.5rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  
+}
+
+/* HEADER */
+
+.header {
+  min-width: 50rem;
+  height: 15rem;;
+  background: #c9cad8;
+  border-radius: 100px;;
+  padding: 35px 45px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+  right: -32rem;
+  z-index: 10;
+  position : absolute;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 54px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 1px;
+  
+ 
+}
+
+
+
+/* SECTION */
+
+.section {
+  margin-top: 70px;
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 35px;
+}
+
+.smallCircle {
+  width: 18px;
+  height: 18px;
+  border: 4px solid #2f394f;
+  border-radius: 50%;
+}
+
+.headingRow h2 {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 800;
+  color: #1f2a44;
+}
+
+/* TIMELINE */
+
+.timeline {
+  border-left: 2px solid #aeb0b9;
+  margin-left: 8px;
+  padding-left: 28px;
+}
+
+.timelineItem {
+  margin-bottom: 42px;
+}
+
+.timelineItem h4 {
+    
+  margin: 0 0 10px 0;
+  font-size: 40px;
+  font-weight: 800;
+  color: #1d2436;
+}
+
+.timelineItem h3 {
+    
+  margin: 0;
+  font-size: 36px;
+  font-weight: 400;
+  color: #1d2436;
+  margin-bottom : 2.5rem;
+}
+
+
+
+.timelineItem span {
+  font-size: 18px;
+}
+
+/* EXPERIENCE */
+
+.experience {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 50px;
 }
 
-.entryDate {
-  font-size: 0.7rem;
-  font-style: italic;
-  margin: 0;
-  color: #444;
+
+
+
+.jobDescription {
+  
+  padding-left: 28px;
+  margin-left: 5px;
 }
 
-.entryCompany {
-  font-size: 0.75rem;
-  font-weight: 700;
+.jobDescription p {
   margin: 0;
-  text-transform: uppercase;
+  font-size: 32px;
+  line-height: 1.7;
+  text-align: justify;
+  color: #222;
 }
 
-.entryRole {
-  font-size: 0.72rem;
-  margin: 0;
-  color: #333;
+/* SKILLS */
+
+.skills {
+  border-left: 2px solid #aeb0b9;
+  padding-left: 28px;
+  margin-left: 8px;
 }
 
-.entryGpa {
-  font-size: 0.72rem;
+.skills ul {
   margin: 0;
-  color: #333;
+  padding-left: 28px;
+}
+
+.skills li {
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: #1c2235;
+}
+
+.skillItem {
+  font-size : 32px;
+  color : #1c2235;
+}
+/* BOTTOM SHAPE */
+
+.bottomShape {
+  position: absolute;
+  bottom: -50px;
+  left: -80px;
+  width: 120%;
+  height: 180px;
+  background: #2f394f;
+  transform: rotate(-6deg);
+}
+
+.bottomShape::before {
+  content: "";
+  position: absolute;
+  top: -32px;
+  left: -20px;
+  width: 120%;
+  height: 50px;
+  background: #d8d8d8;
 }

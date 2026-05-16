@@ -3,6 +3,8 @@ import {ResumeData} from "./type/resume"
 import mainstyles from "./main_style.module.css"
 import styles from "./template2.module.css"
 import { useEffect,useState } from "react"
+
+
 type Props = {
   data: ResumeData;
   size: "full" | "small";
@@ -23,43 +25,138 @@ export default function Template4({ data, size }: Props) {
   }
   return (
     <>
-        <div className ={size == "full" ? mainstyles.ResumeFull :mainstyles.ResumeSmall } >
-            <div className={styles.name}>{data.firstName} {data.lastName}</div>
-            <div className={styles.profile}>
-             <img src={data.profileImg} alt="Image profile" className={styles.profileImg} />
-             <div className={styles.contact}><h3>Contact</h3></div>
-              <div className={styles.contactInfo}>
-                <ul className={styles.contactList}>
-                  <li><img src={"/icon/phone.png"} alt="Phone" /> {data.contact.phoneNumber}</li>
-                  <li><img src={"/icon/mail.png"} alt="Email" /> {data.email}</li>
-                  <li><img src={"/icon/location.png"} alt="Address" /> {data.contact.address}</li>
-                </ul>
-              </div>
-            </div>
-            <div className={styles.aboutMeContainer}>
-              <div className={styles.header}>
-                <img src={"/icon/user.png"} alt="User" className={styles.userIcon} />
-                <h3>About Me</h3>
-              </div>
-              <p style={{ margin: "1rem 0 0 4.5rem" }}>{data.aboutMe}</p>
-            </div>
-            <section className={styles.resumeSection}>
-  <h2 className={styles.sectionTitle}>◯ EDUCATION</h2>
+       <div className ={size == "full" ? mainstyles.ResumeFull :mainstyles.ResumeSmall } >
+          
+ 
+    <div className={styles.resume}>
+    
+      <div className={styles.leftPanel}>
+        <div className={styles.header}>
+          <h3>{data.firstName} {data.lastName}</h3>
+         
+        </div>
+        <div className={styles.profileWrapper}>
+          <div className={styles.profileCircle}>
+            <img src={data.profileImg} alt="Profile" />
+          </div>
+        </div>
+         
+        <div className={styles.aboutCard}>
+          <div className={styles.sectionTitle}>
+          
+            <h2>About Me</h2>
+          </div>
 
-  <div className={styles.entry}>
-    <p className={styles.entryDate}>(2011–2015)</p>
-    <h4 className={styles.entryCompany}>WARDIERE UNIVERSITY</h4>
-    <p className={styles.entryRole}>Bachelor of Marketing</p>
-    <p className={styles.entryGpa}>3.65</p>
-  </div>
+          <p>
+            {data.aboutMe}
+          </p>
+        </div>
 
-  <div className={styles.entry}>
-    <p className={styles.entryDate}>(2014–2018)</p>
-    <h4 className={styles.entryCompany}>WARDIERE UNIVERSITY</h4>
-    <p className={styles.entryRole}>BA Sales and Commerce</p>
-    <p className={styles.entryGpa}>3.74</p>
-  </div>
-</section>
+        <div className={styles.contactSection}>
+          <div className={styles.contactHeader}>
+            <h3>Contact me</h3>
+          </div>
+
+          <div className={styles.contactItem}>
+            
+              <img src={"/icon/phone.png"} alt="Phone" />
+          
+            <span>{data.contact.phoneNumber}</span>
+          </div>
+
+          <div className={styles.contactItem}>
+            <img src={"/icon/mail.png"} alt="Email" />
+            <span>{data.email}</span>
+          </div>
+
+          <div className={styles.contactItem}>
+           
+              <img src={"/icon/location.png"} alt="Address" />
+          
+            <span>{data.contact.address}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className={styles.rightPanel}>
+          {/* HEADER */}
+         
+
+        {/* EDUCATION */}
+        <section className={styles.section}>
+          <div className={styles.headingRow}>
+            <div className={styles.smallCircle}></div>
+            <h2>EDUCATION</h2>
+          </div>
+
+          <div className={styles.timeline}>
+            <div className={styles.timelineItem}>
+              <h4>Education Level</h4>
+              <h3>{data.education.level}</h3>
+
+              <h4>Institution</h4>
+              <h3>{data.education.university}</h3>
+
+              <h4> Major</h4>
+              <h3>{data.education.major}</h3>
+             
+            </div>
+
+            
+          </div>
+        </section>
+
+        {/* EXPERIENCE */}
+        <section className={styles.section}>
+          <div className={styles.headingRow}>
+            <div className={styles.smallCircle}></div>
+            <h2>WORK EXPERIENCE</h2>
+          </div>
+
+          <div className={styles.experience}>
+            <div className={styles.job}>
+            {data.experience?.map((experience,idx)=>(
+
+              <div key={idx} className={styles.timeline}>
+                <h4 style={{fontSize: '36px', color: '#1d2436'}}>{experience.title} | {`(${experience.startDate.slice(0,4)}-${experience.endDate.slice(0,4)})`}</h4>
+                <div className={styles.jobDescription}>
+                  <p>{experience.description}</p>
+                </div>
+              </div>
+            ))}
+         
+
+              
+            </div>
+
+            
+          </div>
+        </section>
+
+        {/* SKILLS */}
+        <section className={styles.section}>
+          <div className={styles.headingRow}>
+            <div className={styles.smallCircle}></div>
+            <h2>SKILLS</h2>
+          </div>
+
+          <div className={styles.skills}>
+           {data.badges?.map((badge, idx) => (
+              <div key={idx} className={styles.skillItem}>
+                <img src={badge.imgUrl} alt={badge.badgeName} />
+                <h3>{badge.badgeName}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* BOTTOM SHAPE */}
+      <div className={styles.bottomShape}></div>
+    </div>
+  
+
         </div>
     </>
   );
